@@ -6,11 +6,11 @@ export default function Footer() {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: "/contact", label: "Contact / Book" },
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-[#1a3d3d]">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-[#1a3d3d] to-[#153030]">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -97,13 +97,13 @@ export default function Footer() {
           </p>
           <div className="flex gap-6 text-sm">
             <Link
-              href="/contact"
+              href="/privacy"
               className="text-white/50 transition-colors hover:text-white/80"
             >
               Privacy
             </Link>
             <Link
-              href="/contact"
+              href="/terms"
               className="text-white/50 transition-colors hover:text-white/80"
             >
               Terms

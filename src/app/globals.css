@@ -2,13 +2,15 @@
 
 /* Friendly Support Limited - Brand Colours */
 :root {
-  --background: #F5F7F7;
+  --background: #F8FAFA;
   --foreground: #2d3748;
   --primary: #1F7A7A;
   --primary-dark: #1a6565;
   --secondary: #6BAED6;
   --accent: #7FBF7F;
-  --neutral: #F5F7F7;
+  --neutral: #F8FAFA;
+  --card-shadow: 0 1px 3px rgba(26, 61, 61, 0.08);
+  --card-shadow-hover: 0 12px 40px rgba(26, 61, 61, 0.12);
 }
 
 @theme inline {
@@ -27,10 +29,18 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-open-sans), "Calibri", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .font-heading {
   font-family: var(--font-libre-baskerville), Georgia, serif;
+}
+
+/* Refined focus ring for accessibility */
+*:focus-visible {
+  outline: 2px solid #1F7A7A;
+  outline-offset: 2px;
 }
 
 /* Smooth animations */

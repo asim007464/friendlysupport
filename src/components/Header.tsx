@@ -14,7 +14,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#e8ecec] bg-white">
+    <header className="sticky top-0 z-50 w-full border-b border-[#e8ecec] bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="shrink-0 transition-opacity hover:opacity-85">
@@ -75,7 +75,7 @@ export default function Header() {
         }`}
       >
         <div className="overflow-hidden">
-          <nav className="border-t border-[#e8ecec] bg-[#F5F7F7] px-4 py-4">
+          <nav className="border-t border-[#e8ecec] bg-[#F8FAFA] px-4 py-4">
             <div className="flex flex-col gap-0.5">
               {navLinks.map((link) => (
                 <Link

@@ -27,7 +27,7 @@ const keyPoints = [
     icon: HomeIcon,
   },
   {
-    title: "Live‑in home support",
+    title: "Live‑in home support with no personal care",
     description: "Short or long-term – someone in the house day and night for peace of mind.",
     icon: MoonIcon,
   },
@@ -37,8 +37,8 @@ const keyPoints = [
     icon: ClockIcon,
   },
   {
-    title: "NHS experience at the heart",
-    description: "Founded by someone with many years working with adults and older people.",
+    title: "Founded by someone with many years' experience working in the NHS with adults and older people",
+    description: "We bring that understanding to every visit.",
     icon: HeartIcon,
   },
 ];
@@ -46,21 +46,20 @@ const keyPoints = [
 export default function Home() {
 
   return (
-    <div className="min-h-screen bg-[#F5F7F7]">
+    <div className="min-h-screen bg-[#F8FAFA]">
       <Header />
 
       <main>
-        {/* Hero Section - care image, dark overlay, light text */}
-        <section className="relative min-h-[60vh] overflow-hidden">
-          {/* Care-related background image - elderly with caregiver */}
+        {/* Hero Section */}
+        <section className="relative min-h-[65vh] overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1773227060446-93239a553f1f?w=1200&q=80')`,
             }}
           />
-          {/* Dark overlay */}
-          <div className="absolute inset-0 bg-[#1a3d3d]/75 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-[#1a3d3d]/80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1a3d3d] via-transparent to-transparent opacity-60" />
           <div className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
             <div className="text-center">
               <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-[#7FBF7F]">
@@ -100,7 +99,7 @@ export default function Home() {
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3.5 text-base font-semibold text-[#1F7A7A] transition-colors hover:bg-white/95"
+                  className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-[#1F7A7A] shadow-lg transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-xl"
                 >
                   Get in touch
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,7 +108,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/services"
-                  className="inline-flex items-center rounded-lg border-2 border-white px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-white/10"
+                  className="inline-flex items-center rounded-xl border-2 border-white px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 hover:backdrop-blur-sm"
                 >
                   Our services
                 </Link>
@@ -119,17 +118,17 @@ export default function Home() {
         </section>
 
         {/* How We Can Help */}
-        <section className="relative bg-[#F5F7F7] py-24 sm:py-32">
+        <section className="relative py-24 sm:py-32">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-20 text-center">
-              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-[#1F7A7A]">
+            <div className="mb-16 text-center">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#1F7A7A]">
                 How we can help
               </p>
-              <h2 className="font-heading mb-5 text-3xl font-bold text-[#1a3d3d] sm:text-4xl lg:text-5xl">
+              <h2 className="font-heading mb-4 text-3xl font-bold text-[#1a3d3d] sm:text-4xl lg:text-5xl">
                 Support That Makes a Difference
               </h2>
-              <div className="mx-auto h-1 w-16 rounded-full bg-[#7FBF7F]" />
-              <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[#4a5568]">
+              <div className="mx-auto h-1 w-12 rounded-full bg-[#7FBF7F]" />
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#5a6575]">
                 Practical help and warm companionship – so life at home feels easier and less lonely.
               </p>
             </div>
@@ -139,15 +138,15 @@ export default function Home() {
                 return (
                   <div
                     key={index}
-                    className="group relative rounded-2xl bg-[#1F7A7A] p-8 shadow-sm transition-all duration-300 ease-out hover:bg-white hover:shadow-xl"
+                    className="rounded-2xl border border-[#e8ecec] bg-white p-6 shadow-[0_1px_3px_rgba(26,61,61,0.08)] transition-all hover:border-[#1F7A7A]/20 hover:shadow-[0_8px_30px_rgba(26,61,61,0.1)]"
                   >
-                    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white/15 transition-all duration-300 group-hover:bg-[#1F7A7A]/10 group-hover:rounded-2xl text-white group-hover:text-[#1F7A7A]">
-                      <IconComponent className="w-7 h-7" color="currentColor" />
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#1F7A7A]/10 text-[#1F7A7A]">
+                      <IconComponent className="h-6 w-6" color="currentColor" />
                     </div>
-                    <h3 className="mb-3 text-lg font-semibold text-white transition-colors group-hover:text-[#1a3d3d]">
+                    <h3 className="font-heading mb-2 text-lg font-bold text-[#1a3d3d]">
                       {point.title}
                     </h3>
-                    <p className="text-[15px] leading-relaxed text-white/90 transition-colors group-hover:text-[#5a6575]">
+                    <p className="text-[15px] leading-relaxed text-[#4a5568]">
                       {point.description}
                     </p>
                   </div>
@@ -159,8 +158,8 @@ export default function Home() {
 
         {/* Call to Action Section */}
         <section className="relative overflow-hidden py-24 sm:py-32">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1F7A7A] via-[#1a6565] to-[#1F7A7A]" />
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1F7A7A] via-[#1a5f5f] to-[#1a4d4d]" />
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.04%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-60" />
           <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
             <h2 className="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
               Not sure where to start?
