@@ -199,15 +199,15 @@ export default function ContactPage() {
                             <div className="grid gap-6 sm:grid-cols-2">
                               <div>
                                 <label htmlFor="fullName" className={labelClass}>Your full name *</label>
-                                <input type="text" id="fullName" name="fullName" required value={formData.fullName} onChange={handleChange} className={inputClass} placeholder="Jane Smith" />
+                                <input type="text" id="fullName" name="fullName" required value={formData.fullName} onChange={handleChange} className={inputClass} />
                               </div>
                               <div>
                                 <label htmlFor="phone" className={labelClass}>Phone number *</label>
-                                <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleChange} className={inputClass} placeholder="07xxx xxxxxx" />
+                                <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleChange} className={inputClass} />
                               </div>
                               <div>
                                 <label htmlFor="email" className={labelClass}>Email address *</label>
-                                <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className={inputClass} placeholder="jane@example.com" />
+                                <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} className={inputClass} />
                               </div>
                             </div>
                           </div>
@@ -258,13 +258,15 @@ export default function ContactPage() {
                             <div className="space-y-6">
                               <div>
                                 <label htmlFor="address" className={labelClass}>Address</label>
-                                <textarea id="address" name="address" rows={2} value={formData.address} onChange={handleChange} className={inputClass} placeholder="Street, town and postcode – or just the area if you prefer" />
+                                <textarea id="address" name="address" rows={2} value={formData.address} onChange={handleChange} className={inputClass} />
                               </div>
                               <div>
                                 <label htmlFor="borough" className={labelClass}>Borough</label>
                                 <select name="borough" value={formData.borough} onChange={handleChange} className={inputClass}>
                                   <option value="barnet">Barnet</option>
-                                  <option value="enfield">Enfield</option>
+                                  <option value="brent">Brent</option>
+                                  <option value="harrow">Harrow</option>
+                                  <option value="ealing">Ealing</option>
                                   <option value="other">Other nearby</option>
                                 </select>
                               </div>
@@ -369,7 +371,7 @@ export default function ContactPage() {
                             <p className="text-[15px] text-[#4a5568]">When would support work best for you?</p>
                             <div>
                               <label htmlFor="preferredDaysTimes" className={labelClass}>Preferred days and times</label>
-                              <input type="text" id="preferredDaysTimes" name="preferredDaysTimes" value={formData.preferredDaysTimes} onChange={handleChange} className={inputClass} placeholder="e.g. Mondays and Wednesdays, mornings" />
+                              <input type="text" id="preferredDaysTimes" name="preferredDaysTimes" value={formData.preferredDaysTimes} onChange={handleChange} className={inputClass} />
                             </div>
                           </div>
                     )}
@@ -383,7 +385,7 @@ export default function ContactPage() {
                             <p className="text-[15px] text-[#4a5568]">Optional – share anything that would help us support you better.</p>
                             <div>
                               <label htmlFor="anythingElse" className={labelClass}>Share about the person or situation</label>
-                              <textarea id="anythingElse" name="anythingElse" rows={4} value={formData.anythingElse} onChange={handleChange} className={inputClass} placeholder="e.g. gets anxious in the evenings, has memory problems, lives alone – whatever you feel comfortable sharing" />
+                              <textarea id="anythingElse" name="anythingElse" rows={4} value={formData.anythingElse} onChange={handleChange} className={inputClass} />
                             </div>
                           </div>
                     )}
@@ -494,7 +496,9 @@ export default function ContactPage() {
                         </div>
                         <div>
                           <p className="text-xs font-medium uppercase tracking-wider text-[#94a3b8]">Area</p>
-                          <p className="mt-0.5 text-[15px] font-medium text-[#1a3d3d]">Barnet & Enfield</p>
+                          <p className="mt-0.5 text-[15px] font-medium text-[#1a3d3d]">
+                            Barnet, Brent, Harrow &amp; Ealing
+                          </p>
                         </div>
                       </div>
                     </div>

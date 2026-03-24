@@ -63,7 +63,8 @@ export default function AboutPage() {
               Who we are
             </h2>
             <p className="mb-8 text-[15px] leading-relaxed text-[#4a5568]">
-              Friendly Support Limited is a small, local service for people in Barnet and Enfield who
+              Friendly Support Limited is a small, local service for people in Barnet, Brent, Harrow
+              and Ealing who
               want to stay in their own homes but would value a bit of extra help and company. We
               keep things simple, personal and flexible – no call centres, no rushed 15‑minute
               visits.

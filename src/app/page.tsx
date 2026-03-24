@@ -6,8 +6,6 @@ import {
   ShoppingIcon,
   HomeIcon,
   MoonIcon,
-  ClockIcon,
-  HeartIcon,
 } from "@/components/ServiceIcons";
 
 const keyPoints = [
@@ -31,16 +29,6 @@ const keyPoints = [
     description: "Short or long-term – someone in the house day and night for peace of mind.",
     icon: MoonIcon,
   },
-  {
-    title: "Visits from 2 hours upwards",
-    description: "Unhurried visits with time to get things done and have a proper chat.",
-    icon: ClockIcon,
-  },
-  {
-    title: "Founded by someone with many years' experience working in the NHS with adults and older people",
-    description: "We bring that understanding to every visit.",
-    icon: HeartIcon,
-  },
 ];
 
 export default function Home() {
@@ -63,20 +51,21 @@ export default function Home() {
           <div className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
             <div className="text-center">
               <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-[#7FBF7F]">
-                Barnet & Enfield
+                Barnet, Brent, Harrow &amp; Ealing
               </p>
               <h1 className="font-heading mb-8 text-4xl font-bold leading-[1.2] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Friendly Support Limited
               </h1>
               <p className="mb-4 text-xl font-medium text-[#6BAED6] sm:text-2xl">
-                Home Help in Barnet & Enfield
+                Home Help in Barnet, Brent, Harrow &amp; Ealing
               </p>
               <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-white/95">
                 Friendly faces, practical help and time to talk – so you or your
                 loved one can stay happily at home.
               </p>
               <p className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-white/85">
-                At Friendly Support Limited, we give adults in Barnet and Enfield
+                At Friendly Support Limited, we give adults in Barnet, Brent, Harrow
+                and Ealing
                 the kind of everyday support most families wish they had more
                 time for. We&apos;re here for companionship, errands, light help
                 around the house – and, when needed, live‑in home support – so
@@ -85,15 +74,7 @@ export default function Home() {
               <div className="mb-12 flex flex-wrap justify-center gap-6 text-sm text-white/90">
                 <span className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#7FBF7F]" />
-                  From 2 hours per visit
-                </span>
-                <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#7FBF7F]" />
-                  NHS experience
-                </span>
-                <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#7FBF7F]" />
-                  Local to Barnet & Enfield
+                  Local to Barnet, Brent, Harrow and Ealing
                 </span>
               </div>
               <div className="flex flex-wrap justify-center gap-4">

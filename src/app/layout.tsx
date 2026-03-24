@@ -15,9 +15,9 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Friendly Support Limited – Home Help in Barnet & Enfield",
+  title: "Friendly Support Limited – Home Help in Barnet, Brent, Harrow & Ealing",
   description:
-    "Friendly faces, practical help and time to talk – so you or your loved one can stay happily at home. Companionship, errands and light help across Barnet and Enfield.",
+    "Friendly faces, practical help and time to talk – so you or your loved one can stay happily at home. Companionship, errands and light help across Barnet, Brent, Harrow and Ealing.",
 };
 
 export default function RootLayout({
