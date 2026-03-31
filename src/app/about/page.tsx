@@ -53,30 +53,24 @@ export default function AboutPage() {
             <h2 className="font-heading mb-6 text-2xl font-bold text-[#1a3d3d] sm:text-3xl">
               Who we are
             </h2>
-            <p className="mb-8 text-[15px] leading-relaxed text-[#4a5568]">
-              Friendly Support Limited is a small, local service for people in Barnet, Brent, Harrow
-              and Ealing who
-              want to stay in their own homes but would value a bit of extra help and company. We
-              keep things simple, personal and flexible – no call centres, no rushed 15‑minute
-              visits.
-            </p>
-
-            <h2 className="font-heading mb-6 mt-14 text-2xl font-bold text-[#1a3d3d] sm:mt-16 sm:text-3xl">
-              Your background (no doctor capacity)
-            </h2>
-            <div className="space-y-6 text-[15px] leading-relaxed text-[#4a5568]">
+            <div className="mb-8 space-y-6 text-[15px] leading-relaxed text-[#4a5568]">
               <p>
-                Friendly Support Limited was started by someone who has spent many years working in
-                the NHS with adults and older people living with long‑term health conditions. That
+                Friendly Support Limited is a small, local service for people in Barnet, Brent, Harrow
+                and Ealing who want to stay in their own homes but would value a bit of extra help and
+                company. We keep things simple, personal and flexible – no call centres, no rushed
+                15‑minute visits.
+              </p>
+              <p>
+                Friendly Support Limited was started by someone who has spent many years working in the
+                NHS with adults and older people living with long‑term health conditions. That
                 experience means we understand how health problems can affect everyday life, and how
                 important it is to feel listened to and treated with respect.
               </p>
               <p>
                 Through Friendly Support Limited we are <strong>not</strong> offering medical care or
-                medical advice. We don&apos;t diagnose, prescribe or provide treatments, and
-                we&apos;re not acting in the capacity of a doctor or specialist. Our role here is
-                purely to offer practical and social support alongside your usual NHS and social care
-                services.
+                medical advice. We don&apos;t diagnose, prescribe or provide treatments, and we&apos;re
+                not acting in the capacity of a doctor or specialist. Our role here is purely to offer
+                practical and social support alongside your usual NHS and social care services.
               </p>
             </div>
 
