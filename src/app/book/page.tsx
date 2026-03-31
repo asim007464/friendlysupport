@@ -500,11 +500,9 @@ export default function BookPage() {
                               <h3 className="font-heading text-xl font-bold text-[#1a3d3d]">When, how often & how long</h3>
                             </div>
 
-                            <p className="text-[14px] leading-relaxed text-[#4a5568]">
-                              <span className="font-semibold text-[#1a3d3d]">Hourly:</span> £25/hr, minimum 2 hours, visits{" "}
-                              8am–8pm.{" "}
-                              <span className="font-semibold text-[#1a3d3d]">Live-in:</span> from around £1,150/week — we
-                              confirm in writing.
+                            <p className="text-[14px] font-bold leading-relaxed text-[#1a3d3d]">
+                              Hourly: £25/hr, minimum 2 hours, visits 8am–8pm. Live-in: full day, night, or 24 hours (day
+                              and night) — we confirm in writing.
                             </p>
 
                             <div>
