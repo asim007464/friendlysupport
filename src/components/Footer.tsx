@@ -6,7 +6,8 @@ export default function Footer() {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact / Book" },
+    { href: "/contact", label: "Contact" },
+    { href: "/book", label: "Book now" },
   ];
 
   return (
@@ -68,10 +69,10 @@ export default function Footer() {
               friendly, no-pressure conversation.
             </p>
             <Link
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-[15px] font-semibold text-[#1F7A7A] transition-all hover:bg-white/95 hover:shadow-lg"
             >
-              Contact us
+              Book now
               <svg
                 className="h-4 w-4"
                 fill="none"

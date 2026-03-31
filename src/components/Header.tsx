@@ -11,6 +11,7 @@ export default function Header() {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -33,10 +34,10 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/book"
             className="ml-2 rounded-lg bg-[#1F7A7A] px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
           >
-            Contact
+            Book now
           </Link>
         </nav>
 
@@ -88,11 +89,11 @@ export default function Header() {
                 </Link>
               ))}
               <Link
-                href="/contact"
+                href="/book"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-2 rounded-lg bg-[#1F7A7A] px-4 py-3 text-center text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
               >
-                Contact
+                Book now
               </Link>
             </div>
           </nav>

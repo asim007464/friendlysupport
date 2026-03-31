@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { LIVE_IN_WEEK_GUIDE } from "@/data/pricingCopy";
 import {
   ChatIcon,
   ShoppingIcon,
@@ -94,7 +95,8 @@ export default function ServicesPage() {
                 Regular visits
               </h2>
               <p className="mt-2 text-[16px] leading-relaxed text-[#4a5568]">
-                Unhurried visits, minimum 2 hours – we take time to get to know you.
+                Unhurried visits, minimum 2 hours – we take time to get to know you. Daytime visits are
+                usually <strong>£25 per hour</strong> (minimum 2 hours each visit).
               </p>
             </div>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -155,14 +157,8 @@ export default function ServicesPage() {
               </p>
             </div>
             <div className="mt-6 rounded-xl border border-[#1F7A7A]/20 bg-[#F8FAFA] p-5">
-              <p className="font-semibold text-[#1a3d3d]">
-                Price guide: Live‑in home support (no personal care) starts from around £1,150 per
-                week.
-              </p>
-              <p className="mt-2 text-sm text-[#4a5568]">
-                Covers: live‑in worker, companionship, light household help, shopping/errands,
-                appointment support, matching, checks and oversight.
-              </p>
+              <p className="font-semibold text-[#1a3d3d]">Live‑in: weekly cost (guide)</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-[#4a5568]">{LIVE_IN_WEEK_GUIDE}</p>
             </div>
             </div>
           </div>
@@ -216,10 +212,10 @@ export default function ServicesPage() {
               visit.
             </p>
             <Link
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#1F7A7A] shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/95 hover:shadow-2xl"
             >
-              Get in touch
+              Book now
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

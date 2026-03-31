@@ -79,10 +79,10 @@ export default function Home() {
               </div>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
-                  href="/contact"
+                  href="/book"
                   className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-[#1F7A7A] shadow-lg transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-xl"
                 >
-                  Get in touch
+                  Book now
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -150,10 +150,10 @@ export default function Home() {
               or book a first visit.
             </p>
             <Link
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#1F7A7A] shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/95 hover:shadow-2xl"
             >
-              Get in touch
+              Book now
               <svg
                 className="h-5 w-5"
                 fill="none"

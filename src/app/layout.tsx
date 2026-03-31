@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Open_Sans } from "next/font/google";
+import SiteChat from "@/components/SiteChat";
 import "./globals.css";
 
 const libreBaskerville = Libre_Baskerville({
@@ -31,6 +32,7 @@ export default function RootLayout({
         className={`${libreBaskerville.variable} ${openSans.variable} font-sans antialiased`}
       >
         {children}
+        <SiteChat />
       </body>
     </html>
   );

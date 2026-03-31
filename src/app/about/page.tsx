@@ -41,24 +41,15 @@ export default function AboutPage() {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#1a3d3d] via-[#1F7A7A] to-[#1a6565]">
-          <div className="absolute inset-0 bg-[#1a3d3d]/60" />
-          <div className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
-            <div className="text-center">
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-[#7FBF7F]">
-                Our story
-              </p>
-              <h1 className="font-heading mb-6 text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-                A bit about us
-              </h1>
-            </div>
-          </div>
-        </section>
-
-        {/* Who we are */}
-        <section className="relative py-24 sm:py-32">
+        <section className="relative py-16 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#1F7A7A]">
+              Our story
+            </p>
+            <h1 className="font-heading mb-10 text-4xl font-bold leading-tight tracking-tight text-[#1a3d3d] sm:mb-12 sm:text-5xl lg:text-6xl">
+              A bit about us
+            </h1>
+
             <h2 className="font-heading mb-6 text-2xl font-bold text-[#1a3d3d] sm:text-3xl">
               Who we are
             </h2>
@@ -70,7 +61,7 @@ export default function AboutPage() {
               visits.
             </p>
 
-            <h2 className="font-heading mb-6 mt-16 text-2xl font-bold text-[#1a3d3d] sm:text-3xl">
+            <h2 className="font-heading mb-6 mt-14 text-2xl font-bold text-[#1a3d3d] sm:mt-16 sm:text-3xl">
               Your background (no doctor capacity)
             </h2>
             <div className="space-y-6 text-[15px] leading-relaxed text-[#4a5568]">
@@ -151,17 +142,6 @@ export default function AboutPage() {
                 );
               })}
             </div>
-
-            <h2 className="font-heading mb-6 mt-16 text-2xl font-bold text-[#1a3d3d] sm:text-3xl">
-              Regulation – clear and simple
-            </h2>
-            <p className="text-[15px] leading-relaxed text-[#4a5568]">
-              At the moment, Friendly Support Limited offers non‑regulated home support, which
-              doesn&apos;t require registration with the Care Quality Commission (CQC). Our
-              long‑term plan is to build on this foundation and, once fully ready and approved,
-              offer regulated personal care as well – but for now, we stick firmly to the
-              non‑regulated side.
-            </p>
           </div>
         </section>
 
@@ -178,10 +158,10 @@ export default function AboutPage() {
               visit.
             </p>
             <Link
-              href="/contact"
+              href="/book"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#1F7A7A] shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/95 hover:shadow-2xl"
             >
-              Get in touch
+              Book now
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

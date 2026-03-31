@@ -35,7 +35,7 @@ export default function TermsPage() {
               </h2>
               <p>
                 Our services are subject to separate terms and conditions, which we will discuss
-                with you when you enquire or book. Our standard rate is £28 per hour with a
+                with you when you enquire or book. Our standard rate is £25 per hour with a
                 minimum visit of 2 hours.
               </p>
               <h2 className="font-heading mt-12 text-xl font-bold text-[#1a3d3d]">
