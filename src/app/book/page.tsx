@@ -184,10 +184,10 @@ export default function BookPage() {
       case 3:
         return !!(form.addressLine1.trim() && form.postcode.trim());
       case 4:
-        return (
+        return !!(
           form.helpTypes.length > 0 &&
           (!form.helpTypes.includes("Other") || form.helpTypesOther.trim()) &&
-          !!form.frequency &&
+          form.frequency &&
           (form.frequency !== "Other" || form.frequencyOther.trim())
         );
       case 5:
