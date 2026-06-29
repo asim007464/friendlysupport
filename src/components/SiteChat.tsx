@@ -11,7 +11,7 @@ export default function SiteChat() {
   const [messages, setMessages] = useState<Msg[]>([
     {
       role: "assistant",
-      text: "Hi — ask anything about Friendly Support Limited (services, areas, visits, booking). Answers are based on this website.",
+      text: "Hi. Ask anything about Friendly Support Limited: services, areas, visits or booking. Answers are based on this website.",
     },
   ]);
   const [loading, setLoading] = useState(false);
@@ -158,7 +158,7 @@ export default function SiteChat() {
               </button>
             </div>
             <p className="mt-2 text-center text-[11px] text-[#94a3b8]">
-              Not a live person —{" "}
+              Not a live person.{" "}
               <Link href="/contact" className="font-medium text-[#1F7A7A] underline">
                 Contact
               </Link>

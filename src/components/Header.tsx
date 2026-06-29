@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "./Logo";
+import { SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,6 +12,7 @@ export default function Header() {
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
+    { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -23,7 +25,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -33,9 +35,19 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          {SITE_PHONE_TEL ? (
+            <a
+              href={`tel:${SITE_PHONE_TEL}`}
+              className="text-[14px] font-semibold text-[#1a3d3d] hover:text-[#1F7A7A]"
+            >
+              {SITE_PHONE_DISPLAY}
+            </a>
+          ) : (
+            <span className="text-[14px] font-medium text-[#64748b]">{SITE_PHONE_DISPLAY}</span>
+          )}
           <Link
             href="/book"
-            className="ml-2 rounded-lg bg-[#1F7A7A] px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
+            className="ml-1 rounded-lg bg-[#1F7A7A] px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
           >
             Book now
           </Link>
@@ -45,7 +57,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#e8ecec] transition-colors hover:bg-[#F5F7F7] md:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#e8ecec] transition-colors hover:bg-[#F5F7F7] lg:hidden"
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
         >
@@ -71,7 +83,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`grid transition-[grid-template-rows] duration-300 ease-out md:hidden ${
+        className={`grid transition-[grid-template-rows] duration-300 ease-out lg:hidden ${
           mobileMenuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >

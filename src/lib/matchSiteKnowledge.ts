@@ -138,11 +138,11 @@ const GREETING_RE = /^(hi|hello|hey|good\s+(morning|afternoon|evening)|hiya)[\s!
 export function matchSiteKnowledge(userMessage: string): string {
   const trimmed = userMessage.trim();
   if (!trimmed) {
-    return "Ask a question about Friendly Support Limited — for example areas we cover, what we do, or how to book.";
+    return "Ask a question about Friendly Support Limited, for example areas we cover, what we do, or how to book.";
   }
 
   if (GREETING_RE.test(trimmed)) {
-    return "Hello. I can answer questions about Friendly Support Limited using the information on this website — try asking about our services, areas we cover, visits, or how to get in touch.";
+    return "Hello. I can answer questions about Friendly Support Limited using the information on this website. Try asking about our services, areas we cover, visits, or how to get in touch.";
   }
 
   const queryTokens = tokenize(trimmed);
@@ -176,6 +176,6 @@ export function matchSiteKnowledge(userMessage: string): string {
   }
 
   return (
-    "I don’t have a specific answer for that on the site. Friendly Support Limited is happy to help in person — use Contact for a short message, or Book now for the full booking form, or browse Services and About for more detail."
+    "I don't have a specific answer for that on the site. Friendly Support Limited is happy to help in person. Use Contact for a short message, Book now for the full booking form, or browse Services and About for more detail."
   );
 }

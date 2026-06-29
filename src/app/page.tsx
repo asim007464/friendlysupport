@@ -1,6 +1,13 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import TrustStrip from "@/components/TrustStrip";
+import HowItWorks from "@/components/HowItWorks";
+import Testimonials from "@/components/Testimonials";
+import FaqAccordion from "@/components/FaqAccordion";
+import EmergencyNote from "@/components/EmergencyNote";
+import { SERVICE_AREA_HERO, SERVICE_AREA_PHRASE } from "@/data/areasCopy";
+import { FAQ_ITEMS } from "@/data/faq";
 import {
   ChatIcon,
   ShoppingIcon,
@@ -32,16 +39,15 @@ const keyPoints = [
 ];
 
 export default function Home() {
-
   return (
     <div className="min-h-screen bg-[#F8FAFA]">
       <Header />
 
-      <main>
+      <main id="main-content">
         {/* Hero Section */}
-        <section className="relative min-h-[65vh] overflow-hidden">
+        <section className="relative min-h-[65vh]">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-fixed bg-center bg-no-repeat"
             style={{
               backgroundImage: `url('https://images.unsplash.com/photo-1773227060446-93239a553f1f?w=1200&q=80')`,
             }}
@@ -51,32 +57,25 @@ export default function Home() {
           <div className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
             <div className="text-center">
               <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-[#7FBF7F]">
-                Barnet, Brent, Harrow &amp; Ealing
+                Greater London
               </p>
               <h1 className="font-heading mb-8 text-4xl font-bold leading-[1.2] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Friendly Support Limited
               </h1>
               <p className="mb-4 text-xl font-medium text-[#6BAED6] sm:text-2xl">
-                Home Help in Barnet, Brent, Harrow &amp; Ealing
+                {SERVICE_AREA_HERO}
               </p>
               <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-white/95">
-                Friendly faces, practical help and time to talk – so you or your
+                Friendly faces, practical help and time to talk, so you or your
                 loved one can stay happily at home.
               </p>
               <p className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-white/85">
-                At Friendly Support Limited, we give adults in Barnet, Brent, Harrow
-                and Ealing
+                At Friendly Support Limited, we give adults {SERVICE_AREA_PHRASE}
                 the kind of everyday support most families wish they had more
-                time for. We&apos;re here for companionship, errands, light help
-                around the house – and, when needed, live‑in home support – so
-                life feels easier and a lot less lonely.
+                time for. We&apos;re here for companionship, errands and light help
+                around the house. When needed, we can arrange live-in home support
+                so life feels easier and a lot less lonely.
               </p>
-              <div className="mb-12 flex flex-wrap justify-center gap-6 text-sm text-white/90">
-                <span className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#7FBF7F]" />
-                  Local to Barnet, Brent, Harrow and Ealing
-                </span>
-              </div>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
                   href="/book"
@@ -88,8 +87,14 @@ export default function Home() {
                   </svg>
                 </Link>
                 <Link
-                  href="/services"
+                  href="/contact"
                   className="inline-flex items-center rounded-xl border-2 border-white px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 hover:backdrop-blur-sm"
+                >
+                  Free consultation
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center rounded-xl border-2 border-white/60 px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 hover:backdrop-blur-sm"
                 >
                   Our services
                 </Link>
@@ -97,6 +102,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <TrustStrip />
 
         {/* How We Can Help */}
         <section className="relative py-24 sm:py-32">
@@ -137,6 +144,26 @@ export default function Home() {
           </div>
         </section>
 
+        <HowItWorks />
+        <Testimonials />
+
+        <section className="relative bg-white py-20 sm:py-28">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <h2 className="font-heading text-3xl font-bold text-[#1a3d3d] sm:text-4xl">Common questions</h2>
+              <p className="mt-3 text-[16px] text-[#5a6575]">Quick answers below. See our full FAQ page for more.</p>
+            </div>
+            <FaqAccordion items={FAQ_ITEMS.slice(0, 4)} />
+            <p className="mt-8 text-center">
+              <Link href="/faq" className="font-semibold text-[#1F7A7A] hover:underline">
+                View all questions →
+              </Link>
+            </p>
+          </div>
+        </section>
+
+        <EmergencyNote />
+
         {/* Call to Action Section */}
         <section className="relative overflow-hidden py-24 sm:py-32">
           <div className="absolute inset-0 bg-gradient-to-br from-[#1F7A7A] via-[#1a5f5f] to-[#1a4d4d]" />
@@ -146,33 +173,55 @@ export default function Home() {
               Not sure where to start?
             </h2>
             <p className="mb-10 text-xl leading-relaxed text-white/90">
-              Use our simple form to ask a question, talk about support at home,
-              or book a first visit.
+              Book a visit or request a free consultation. We&apos;re happy to help.
             </p>
-            <Link
-              href="/book"
-              className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#1F7A7A] shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/95 hover:shadow-2xl"
-            >
-              Book now
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/book"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#1F7A7A] shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/95 hover:shadow-2xl"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
+                Book now
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center rounded-xl border-2 border-white px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
+              >
+                Free consultation
+              </Link>
+            </div>
           </div>
         </section>
       </main>
 
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Friendly Support Limited",
+            description:
+              "Home help and companionship across Greater London. Non-regulated support including errands, light domestic help and live-in care. No personal care or nursing.",
+            areaServed: "Greater London",
+            email: "hello@friendlysupport.co.uk",
+            url: "https://friendlysupport.co.uk",
+          }),
+        }}
+      />
     </div>
   );
 }

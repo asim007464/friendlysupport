@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Open_Sans } from "next/font/google";
 import SiteChat from "@/components/SiteChat";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const libreBaskerville = Libre_Baskerville({
@@ -16,9 +17,9 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Friendly Support Limited – Home Help in Barnet, Brent, Harrow & Ealing",
+  title: "Friendly Support Limited | Home Help & Companionship in Greater London",
   description:
-    "Friendly faces, practical help and time to talk – so you or your loved one can stay happily at home. Companionship, errands and light help across Barnet, Brent, Harrow and Ealing.",
+    "Practical home help and companionship across Greater London. Friendly Support Limited offers errands, light domestic support and live-in home care (no personal care). Book a free consultation.",
 };
 
 export default function RootLayout({
@@ -31,8 +32,15 @@ export default function RootLayout({
       <body
         className={`${libreBaskerville.variable} ${openSans.variable} font-sans antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#1F7A7A] focus:px-4 focus:py-2 focus:text-white"
+        >
+          Skip to main content
+        </a>
         {children}
         <SiteChat />
+        <CookieBanner />
       </body>
     </html>
   );

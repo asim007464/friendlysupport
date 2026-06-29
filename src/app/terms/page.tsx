@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SERVICE_AREA_PHRASE } from "@/data/areasCopy";
 
 export default function TermsPage() {
   return (
@@ -19,8 +20,7 @@ export default function TermsPage() {
             <div className="prose prose-[#4a5568] space-y-6 text-[15px] leading-relaxed">
               <p>
                 By using this website, you agree to these terms of use. Friendly Support Limited
-                provides this site for information about our home support services in Barnet,
-                Brent, Harrow and Ealing.
+                provides this site for information about our home support services {SERVICE_AREA_PHRASE}.
               </p>
               <h2 className="font-heading mt-12 text-xl font-bold text-[#1a3d3d]">
                 Use of the website
@@ -35,8 +35,8 @@ export default function TermsPage() {
               </h2>
               <p>
                 Our services are subject to separate terms and conditions, which we will discuss
-                with you when you enquire or book. Our standard rate is £25 per hour with a
-                minimum visit of 2 hours.
+                with you when you enquire or book. Visits have a minimum of 2 hours; we confirm exact
+                pricing in writing before you agree.
               </p>
               <h2 className="font-heading mt-12 text-xl font-bold text-[#1a3d3d]">
                 Contact

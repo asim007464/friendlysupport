@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SERVICE_AREA_PHRASE } from "@/data/areasCopy";
 
 const valueIconAccents = [
   "bg-[#fef2f2] text-[#dc2626]",
@@ -55,8 +56,7 @@ export default function AboutPage() {
             </h2>
             <div className="mb-8 space-y-6 text-[15px] leading-relaxed text-[#4a5568]">
               <p>
-                Friendly Support Limited is a small, local service for people in Barnet, Brent, Harrow
-                and Ealing who want to stay in their own homes but would value a bit of extra help and
+                Friendly Support Limited is a small service for people {SERVICE_AREA_PHRASE} who want to stay in their own homes but would value a bit of extra help and
                 company. We keep things simple, personal and flexible – no call centres, no rushed
                 15‑minute visits.
               </p>

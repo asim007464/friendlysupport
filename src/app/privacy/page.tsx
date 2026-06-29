@@ -40,6 +40,21 @@ export default function PrivacyPage() {
                 for marketing purposes.
               </p>
               <h2 className="font-heading mt-12 text-xl font-bold text-[#1a3d3d]">
+                Cookies
+              </h2>
+              <p>
+                We use essential cookies so the website works (for example, remembering cookie
+                consent). We do not use advertising or tracking cookies. You can control cookies in
+                your browser settings.
+              </p>
+              <h2 className="font-heading mt-12 text-xl font-bold text-[#1a3d3d]">
+                How long we keep your information
+              </h2>
+              <p>
+                We keep enquiry and booking details only as long as needed to respond, arrange
+                support, or meet legal obligations. We then delete or anonymise them.
+              </p>
+              <h2 className="font-heading mt-12 text-xl font-bold text-[#1a3d3d]">
                 Your rights
               </h2>
               <p>

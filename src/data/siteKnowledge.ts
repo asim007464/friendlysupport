@@ -1,6 +1,7 @@
 import { HOURLY_PRICING_EXPLANATION, LIVE_IN_WEEK_GUIDE } from "@/data/pricingCopy";
+import { SERVICE_AREA_PHRASE } from "@/data/areasCopy";
 
-/** Text used by the site assistant — keep in sync with public page copy. */
+/** Text used by the site assistant. Keep in sync with public page copy. */
 export type KnowledgeChunk = {
   id: string;
   /** Extra terms to improve matching (lowercase). */
@@ -23,7 +24,7 @@ export const SITE_KNOWLEDGE: KnowledgeChunk[] = [
       "service",
     ],
     answer:
-      "Friendly Support Limited offers warm, practical home support for adults who want to stay happily at home. We provide companionship, errands, light help around the house, and optional live‑in home support (without personal care). We keep things personal and flexible — no call centres.",
+      "Friendly Support Limited offers warm, practical home support for adults who want to stay happily at home. We provide companionship, errands, light help around the house, and optional live-in home support (without personal care). We keep things personal and flexible, with no call centres.",
   },
   {
     id: "areas",
@@ -33,15 +34,11 @@ export const SITE_KNOWLEDGE: KnowledgeChunk[] = [
       "local",
       "cover",
       "borough",
-      "barnet",
-      "brent",
-      "harrow",
-      "ealing",
-      "location",
-      "serve",
+      "london",
+      "greater london",
     ],
     answer:
-      "We support people local to Barnet, Brent, Harrow and Ealing.",
+      `We support people ${SERVICE_AREA_PHRASE}.`,
   },
   {
     id: "visit-length",
@@ -55,7 +52,7 @@ export const SITE_KNOWLEDGE: KnowledgeChunk[] = [
       "duration",
     ],
     answer:
-      "Regular visits are unhurried, with a minimum of 2 hours — we take time to get to know you and get things done properly.",
+      "Regular visits are unhurried, with a minimum of 2 hours. We take time to get to know you and get things done properly.",
   },
   {
     id: "hourly-rate",
@@ -97,7 +94,7 @@ export const SITE_KNOWLEDGE: KnowledgeChunk[] = [
       "cuppa",
     ],
     answer:
-      "We offer companionship and social visits — a cuppa, a chat, a walk, or whatever makes the day feel brighter. Visits can be at home or a short trip out.",
+      "We offer companionship and social visits: a cuppa, a chat, a walk, or whatever makes the day feel brighter. Visits can be at home or a short trip out.",
   },
   {
     id: "sitting",
@@ -147,7 +144,7 @@ export const SITE_KNOWLEDGE: KnowledgeChunk[] = [
       "domestic",
     ],
     answer:
-      "We offer light domestic support: tidying, laundry, washing up and simple meal preparation — to keep things comfortable and safe.",
+      "We offer light domestic support: tidying, laundry, washing up and simple meal preparation, to keep things comfortable and safe.",
   },
   {
     id: "live-in",
@@ -221,7 +218,7 @@ export const SITE_KNOWLEDGE: KnowledgeChunk[] = [
       "respect",
     ],
     answer:
-      "Our values are kindness (as we would for family), honesty about what we can do, reliability on time as agreed, and respect — working with you, not over you.",
+      "Our values are kindness (as we would for family), honesty about what we can do, reliability on time as agreed, and respect. We work with you, not over you.",
   },
   {
     id: "contact",
@@ -236,5 +233,35 @@ export const SITE_KNOWLEDGE: KnowledgeChunk[] = [
     ],
     answer:
       "Use Contact for a quick message (name, email, phone, message). Use Book now for the full booking form with address, timing and visits. We reply with a kind, honest answer either way.",
+  },
+  {
+    id: "faq-cqc",
+    keywords: ["cqc", "registered", "regulation", "regulated"],
+    answer:
+      "We provide non-regulated support only, which does not require CQC registration. If you need regulated personal care or nursing, we can signpost you to appropriate services.",
+  },
+  {
+    id: "faq-after-submit",
+    keywords: ["after", "submit", "response", "reply", "how long", "wait"],
+    answer:
+      "We read every enquiry personally. A member of our team will contact you within 24–48 hours (often sooner) to talk through your needs. No pressure, just a friendly conversation.",
+  },
+  {
+    id: "faq-cancel",
+    keywords: ["cancel", "change", "reschedule", "postpone"],
+    answer:
+      "Yes, you can change or cancel a visit. Let us know as soon as you can so we can adjust your support worker's schedule.",
+  },
+  {
+    id: "complaints",
+    keywords: ["complaint", "complaints", "unhappy", "feedback", "problem"],
+    answer:
+      "If something is not right, please tell us first so we can put it right. See our Complaints page for how to raise a concern and what to expect.",
+  },
+  {
+    id: "safeguarding",
+    keywords: ["safeguarding", "abuse", "neglect", "vulnerable", "worried about"],
+    answer:
+      "If you are worried someone is at risk, call 999 in an emergency. For safeguarding concerns about our service, contact us and see our Safeguarding page.",
   },
 ];

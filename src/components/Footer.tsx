@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import { SERVICE_AREA_PHRASE, SERVICE_AREA_SHORT } from "@/data/areasCopy";
+import { SITE_EMAIL, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function Footer() {
   const quickLinks = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
+    { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
     { href: "/book", label: "Book now" },
   ];
@@ -32,11 +35,11 @@ export default function Footer() {
             <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/70">
               Founded by someone with many years of experience working in the NHS
               with older adults. Today, we use that understanding to offer warm,
-              practical home support across Barnet, Brent, Harrow and Ealing.
+              practical home support {SERVICE_AREA_PHRASE}.
             </p>
             <div className="mt-6 flex items-center gap-2 rounded-lg bg-white/5 px-4 py-3 backdrop-blur-sm">
               <span className="text-sm font-medium text-white/90">
-                Serving Barnet, Brent, Harrow &amp; Ealing
+                Serving {SERVICE_AREA_SHORT}
               </span>
             </div>
           </div>
@@ -64,6 +67,23 @@ export default function Footer() {
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-white/50">
               Get in touch
             </h3>
+            <div className="mb-6 space-y-3 text-[15px] text-white/80">
+              <p>
+                <a href={`mailto:${SITE_EMAIL}`} className="hover:text-white hover:underline">
+                  {SITE_EMAIL}
+                </a>
+              </p>
+              {SITE_PHONE_TEL ? (
+                <p>
+                  <a href={`tel:${SITE_PHONE_TEL}`} className="hover:text-white">
+                    {SITE_PHONE_DISPLAY}
+                  </a>
+                </p>
+              ) : (
+                <p>{SITE_PHONE_DISPLAY}</p>
+              )}
+              <p className="text-white/60">{SITE_HOURS}</p>
+            </div>
             <p className="mb-6 text-[15px] leading-relaxed text-white/70">
               Ready to talk about support at home? We&apos;re here to help with a
               friendly, no-pressure conversation.
@@ -96,17 +116,23 @@ export default function Footer() {
             © {new Date().getFullYear()} Friendly Support Limited. All rights
             reserved.
           </p>
-          <div className="flex gap-6 text-sm">
-            <Link
-              href="/privacy"
-              className="text-white/50 transition-colors hover:text-white/80"
-            >
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <Link href="/faq" className="text-white/50 transition-colors hover:text-white/80">
+              FAQ
+            </Link>
+            <Link href="/complaints" className="text-white/50 transition-colors hover:text-white/80">
+              Complaints
+            </Link>
+            <Link href="/safeguarding" className="text-white/50 transition-colors hover:text-white/80">
+              Safeguarding
+            </Link>
+            <Link href="/accessibility" className="text-white/50 transition-colors hover:text-white/80">
+              Accessibility
+            </Link>
+            <Link href="/privacy" className="text-white/50 transition-colors hover:text-white/80">
               Privacy
             </Link>
-            <Link
-              href="/terms"
-              className="text-white/50 transition-colors hover:text-white/80"
-            >
+            <Link href="/terms" className="text-white/50 transition-colors hover:text-white/80">
               Terms
             </Link>
           </div>

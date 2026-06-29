@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ContactBar from "@/components/ContactBar";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -46,14 +47,14 @@ export default function ContactPage() {
 
       <main>
         <section className="relative pt-12 pb-24 sm:pt-16 sm:pb-32">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10 text-center sm:text-left">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-10">
               <h1 className="font-heading text-3xl font-bold text-[#1a3d3d] sm:text-4xl">
-                Contact us
+                Free consultation
               </h1>
-              <p className="mt-2 text-[16px] leading-relaxed text-[#4a5568]">
-                Ask a question or leave a message — we&apos;ll reply as soon as we can. For booking
-                visits and full details, use{" "}
+              <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-[#4a5568]">
+                Ask a question or tell us what you need. We&apos;ll reply as soon as we can. Ready to
+                book? Use{" "}
                 <Link href="/book" className="font-semibold text-[#1F7A7A] hover:underline">
                   Book now
                 </Link>
@@ -61,13 +62,24 @@ export default function ContactPage() {
               </p>
             </div>
 
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
+              <aside className="w-full lg:w-[340px] lg:shrink-0">
+                <div className="sticky top-24 rounded-2xl border border-[#e8ecec] bg-white p-6 shadow-sm sm:p-8">
+                  <h2 className="font-heading mb-4 text-lg font-bold text-[#1a3d3d]">
+                    Contact details
+                  </h2>
+                  <ContactBar />
+                </div>
+              </aside>
+
+              <div className="min-w-0 flex-1">
             {submitted ? (
               <div className={cardClass}>
                 <h2 className="font-heading mb-4 text-2xl font-bold text-[#1a3d3d]">
                   Message sent
                 </h2>
                 <p className="mb-8 text-[15px] leading-relaxed text-[#4a5568]">
-                  Thank you — we&apos;ll get back to you with a friendly reply.
+                  Thank you. We&apos;ll get back to you with a friendly reply.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <button
@@ -193,19 +205,7 @@ export default function ContactPage() {
                 </div>
               </form>
             )}
-
-            <div className="mt-10 rounded-2xl border border-[#e8ecec] bg-white p-6 text-center sm:text-left">
-              <p className="text-[15px] font-semibold text-[#1a3d3d]">Prefer to call or email?</p>
-              <p className="mt-2 text-[15px] text-[#4a5568]">
-                <a href="mailto:hello@friendlysupport.co.uk" className="font-medium text-[#1F7A7A] hover:underline">
-                  hello@friendlysupport.co.uk
-                </a>
-                {" · "}
-                <span className="text-[#1a3d3d]">020 xxxx xxxx</span>
-              </p>
-              <p className="mt-2 text-[14px] text-[#64748b]">
-                Barnet, Brent, Harrow &amp; Ealing
-              </p>
+              </div>
             </div>
           </div>
         </section>
