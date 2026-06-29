@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_EMAIL } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_HOURS } from "@/data/siteContact";
 
 export const metadata: Metadata = {
   title: "Complaints & feedback | Friendly Support Limited",
@@ -33,7 +33,7 @@ export default function ComplaintsPage() {
                   contact form
                 </Link>
                 . Please include your name, the person receiving support (if different), and what
-                happened.
+                happened. We are available {SITE_HOURS}.
               </p>
               <h2 className="font-heading pt-4 text-xl font-bold text-[#1a3d3d]">What happens next</h2>
               <ol className="list-decimal space-y-2 pl-5">

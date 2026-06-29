@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "./Logo";
-import { SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -45,6 +45,12 @@ export default function Header() {
           ) : (
             <span className="text-[14px] font-medium text-[#64748b]">{SITE_PHONE_DISPLAY}</span>
           )}
+          <a
+            href={`mailto:${SITE_EMAIL}`}
+            className="hidden text-[14px] font-semibold text-[#1a3d3d] hover:text-[#1F7A7A] lg:inline"
+          >
+            {SITE_EMAIL}
+          </a>
           <Link
             href="/book"
             className="ml-1 rounded-lg bg-[#1F7A7A] px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
@@ -100,6 +106,13 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
+              <a
+                href={`mailto:${SITE_EMAIL}`}
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-lg px-4 py-3 text-[15px] font-medium text-[#1F7A7A] transition-colors hover:bg-white"
+              >
+                {SITE_EMAIL}
+              </a>
               <Link
                 href="/book"
                 onClick={() => setMobileMenuOpen(false)}

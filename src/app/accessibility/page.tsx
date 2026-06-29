@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_EMAIL } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_HOURS } from "@/data/siteContact";
 
 export const metadata: Metadata = {
   title: "Accessibility | Friendly Support Limited",
@@ -50,7 +50,7 @@ export default function AccessibilityPage() {
                 <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
                   contact us by phone
                 </Link>{" "}
-                if you prefer not to use the website.
+                if you prefer not to use the website. We are available {SITE_HOURS}.
               </p>
             </div>
           </div>

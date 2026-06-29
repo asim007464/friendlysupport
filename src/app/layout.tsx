@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Open_Sans } from "next/font/google";
-import SiteChat from "@/components/SiteChat";
 import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
@@ -39,7 +38,6 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
-        <SiteChat />
         <CookieBanner />
       </body>
     </html>

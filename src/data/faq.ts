@@ -1,3 +1,5 @@
+import { SITE_EMAIL, SITE_HOURS } from "@/data/siteContact";
+
 export type FaqItem = { question: string; answer: string };
 
 export const FAQ_ITEMS: FaqItem[] = [
@@ -27,9 +29,13 @@ export const FAQ_ITEMS: FaqItem[] = [
       "No. We provide non-regulated support only, which does not require CQC registration. If you need regulated personal care or nursing, we can signpost you to appropriate services.",
   },
   {
+    question: "What are your office hours?",
+    answer: `We are available ${SITE_HOURS}. Email us at ${SITE_EMAIL} or call during these times. You can also leave a message and we will get back to you.`,
+  },
+  {
     question: "How do I book or ask a question?",
     answer:
-      "Use Book now for a care request, or Free consultation to ask a question first. You can also email or call us during office hours.",
+      `Use Book now for a care request, or Free consultation to ask a question first. You can also email ${SITE_EMAIL} or call us ${SITE_HOURS}.`,
   },
   {
     question: "What happens after I submit the form?",

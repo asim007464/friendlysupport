@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_EMAIL, SITE_EMERGENCY } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_EMERGENCY, SITE_HOURS } from "@/data/siteContact";
 
 export const metadata: Metadata = {
   title: "Safeguarding | Friendly Support Limited",
@@ -35,7 +35,7 @@ export default function SafeguardingPage() {
                 <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
                   contact form
                 </Link>
-                . We treat safeguarding reports confidentially and respond urgently during office hours.
+                . We treat safeguarding reports confidentially and respond urgently ({SITE_HOURS}).
               </p>
               <h2 className="font-heading pt-4 text-xl font-bold text-[#1a3d3d]">What we do not provide</h2>
               <p>

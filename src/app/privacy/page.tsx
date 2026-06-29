@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SITE_EMAIL } from "@/data/siteContact";
 
 export default function PrivacyPage() {
   return (
@@ -59,11 +60,23 @@ export default function PrivacyPage() {
               </h2>
               <p>
                 You have the right to ask what information we hold about you, to correct it, or to
-                request that we delete it. Please contact us using the details on our Contact page.
+                request that we delete it. Please email{" "}
+                <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                  {SITE_EMAIL}
+                </a>{" "}
+                or use our{" "}
+                <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
+                  contact form
+                </Link>
+                .
               </p>
               <p className="mt-12">
-                If you have any questions about this privacy policy, please{" "}
-                <Link href="/contact" className="text-[#1F7A7A] font-semibold hover:underline">
+                If you have any questions about this privacy policy, please email{" "}
+                <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                  {SITE_EMAIL}
+                </a>{" "}
+                or{" "}
+                <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
                   get in touch
                 </Link>
                 .

@@ -29,9 +29,6 @@ export default function ContactBar({ className = "" }: { className?: string }) {
         <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">Area</p>
         <p className="mt-1 font-medium text-[#1a3d3d]">{SERVICE_AREA_SHORT}</p>
       </div>
-      <p className="text-[14px] leading-relaxed text-[#64748b]">
-        Prefer to talk? Call or email. You don&apos;t have to use the online form.
-      </p>
       <Link href="/faq" className="inline-block text-[14px] font-semibold text-[#1F7A7A] hover:underline">
         Common questions →
       </Link>

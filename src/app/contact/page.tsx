@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactBar from "@/components/ContactBar";
+import { SITE_EMAIL } from "@/data/siteContact";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -53,8 +54,11 @@ export default function ContactPage() {
                 Free consultation
               </h1>
               <p className="mt-2 max-w-2xl text-[16px] leading-relaxed text-[#4a5568]">
-                Ask a question or tell us what you need. We&apos;ll reply as soon as we can. Ready to
-                book? Use{" "}
+                Ask a question or tell us what you need. Email{" "}
+                <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                  {SITE_EMAIL}
+                </a>{" "}
+                or use the form below. Ready to book? Use{" "}
                 <Link href="/book" className="font-semibold text-[#1F7A7A] hover:underline">
                   Book now
                 </Link>

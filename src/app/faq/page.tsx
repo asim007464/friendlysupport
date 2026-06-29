@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FaqAccordion from "@/components/FaqAccordion";
 import { FAQ_ITEMS } from "@/data/faq";
+import { SITE_EMAIL } from "@/data/siteContact";
 
 export const metadata: Metadata = {
   title: "FAQ | Friendly Support Limited",
@@ -19,9 +20,13 @@ export default function FaqPage() {
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h1 className="font-heading mb-4 text-4xl font-bold text-[#1a3d3d]">Frequently asked questions</h1>
             <p className="mb-10 text-[16px] leading-relaxed text-[#4a5568]">
-              Plain answers about our non-regulated home support. Still unsure?{" "}
+              Plain answers about our non-regulated home support. Still unsure? Email{" "}
+              <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                {SITE_EMAIL}
+              </a>{" "}
+              or{" "}
               <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
-                Request a free consultation
+                request a free consultation
               </Link>
               .
             </p>

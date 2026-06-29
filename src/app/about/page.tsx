@@ -1,7 +1,5 @@
-import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SERVICE_AREA_PHRASE } from "@/data/areasCopy";
 
 const valueIconAccents = [
   "bg-[#fef2f2] text-[#dc2626]",
@@ -31,8 +29,7 @@ const values = [
 
 const teamPoints = [
   "Properly interviewed and background-checked",
-  "Given training in communication, dignity and supporting people who may be frail, anxious or forgetful",
-  "Given clear guidance for each visit and regular check-ins",
+  "DBS checked and fully insured and trained",
   "Wherever possible, we match you with the same familiar faces so trust can build over time",
 ];
 
@@ -44,37 +41,11 @@ export default function AboutPage() {
       <main>
         <section className="relative py-16 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-[#1F7A7A]">
-              Our story
-            </p>
             <h1 className="font-heading mb-10 text-4xl font-bold leading-tight tracking-tight text-[#1a3d3d] sm:mb-12 sm:text-5xl lg:text-6xl">
-              A bit about us
+              About us
             </h1>
 
             <h2 className="font-heading mb-6 text-2xl font-bold text-[#1a3d3d] sm:text-3xl">
-              Who we are
-            </h2>
-            <div className="mb-8 space-y-6 text-[15px] leading-relaxed text-[#4a5568]">
-              <p>
-                Friendly Support Limited is a small service for people {SERVICE_AREA_PHRASE} who want to stay in their own homes but would value a bit of extra help and
-                company. We keep things simple, personal and flexible – no call centres, no rushed
-                15‑minute visits.
-              </p>
-              <p>
-                Friendly Support Limited was started by someone who has spent many years working in the
-                NHS with adults and older people living with long‑term health conditions. That
-                experience means we understand how health problems can affect everyday life, and how
-                important it is to feel listened to and treated with respect.
-              </p>
-              <p>
-                Through Friendly Support Limited we are <strong>not</strong> offering medical care or
-                medical advice. We don&apos;t diagnose, prescribe or provide treatments, and we&apos;re
-                not acting in the capacity of a doctor or specialist. Our role here is purely to offer
-                practical and social support alongside your usual NHS and social care services.
-              </p>
-            </div>
-
-            <h2 className="font-heading mb-6 mt-16 text-2xl font-bold text-[#1a3d3d] sm:text-3xl">
               Our team
             </h2>
             <p className="mb-6 text-[15px] leading-relaxed text-[#4a5568]">
@@ -136,30 +107,6 @@ export default function AboutPage() {
                 );
               })}
             </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="relative overflow-hidden py-24 sm:py-32">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1F7A7A] via-[#1a6565] to-[#1F7A7A]" />
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50" />
-          <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-            <h2 className="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl">
-              Ready to talk?
-            </h2>
-            <p className="mb-10 text-lg leading-relaxed text-white/90">
-              Use our simple form to ask a question, talk about support at home, or book a first
-              visit.
-            </p>
-            <Link
-              href="/book"
-              className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#1F7A7A] shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/95 hover:shadow-2xl"
-            >
-              Book now
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
           </div>
         </section>
       </main>

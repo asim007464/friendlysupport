@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { SERVICE_AREA_PHRASE, SERVICE_AREA_SHORT } from "@/data/areasCopy";
+import { SERVICE_AREA_SHORT } from "@/data/areasCopy";
 import { SITE_EMAIL, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function Footer() {
@@ -32,11 +32,6 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-5">
             <Logo size="md" showTagline variant="dark" />
-            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-white/70">
-              Founded by someone with many years of experience working in the NHS
-              with older adults. Today, we use that understanding to offer warm,
-              practical home support {SERVICE_AREA_PHRASE}.
-            </p>
             <div className="mt-6 flex items-center gap-2 rounded-lg bg-white/5 px-4 py-3 backdrop-blur-sm">
               <span className="text-sm font-medium text-white/90">
                 Serving {SERVICE_AREA_SHORT}

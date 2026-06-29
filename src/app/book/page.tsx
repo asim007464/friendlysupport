@@ -36,13 +36,16 @@ const helpOptions = [
   "Help with shopping and errands",
   "Light help at home (tidying, laundry, simple meals)",
   "Live-in home support (no personal care)",
+  "Other",
 ];
 
 const frequencyOptions = [
   "About once a week",
   "A few times a week",
   "Every day",
+  "Live-in support",
   "Not sure yet",
+  "Other",
 ];
 
 const supportTypeOptions = [
@@ -99,7 +102,9 @@ type FormData = {
   addressLine2: string;
   postcode: string;
   helpTypes: string[];
+  helpTypesOther: string;
   frequency: string;
+  frequencyOther: string;
   supportType: string;
   selectedDates: string[];
   timeFrom: string;
@@ -125,7 +130,9 @@ function initialForm(): FormData {
     addressLine2: "",
     postcode: "",
     helpTypes: [],
+    helpTypesOther: "",
     frequency: "",
+    frequencyOther: "",
     supportType: "hourly",
     selectedDates: [],
     timeFrom: "",
@@ -151,12 +158,17 @@ export default function BookPage() {
   };
 
   const toggleHelp = (item: string) => {
-    setForm((prev) => ({
-      ...prev,
-      helpTypes: prev.helpTypes.includes(item)
+    setForm((prev) => {
+      const isSelected = prev.helpTypes.includes(item);
+      const helpTypes = isSelected
         ? prev.helpTypes.filter((h) => h !== item)
-        : [...prev.helpTypes, item],
-    }));
+        : [...prev.helpTypes, item];
+      return {
+        ...prev,
+        helpTypes,
+        helpTypesOther: item === "Other" && isSelected ? "" : prev.helpTypesOther,
+      };
+    });
   };
 
   const canProceed = (): boolean => {
@@ -172,7 +184,12 @@ export default function BookPage() {
       case 3:
         return !!(form.addressLine1.trim() && form.postcode.trim());
       case 4:
-        return form.helpTypes.length > 0 && !!form.frequency;
+        return (
+          form.helpTypes.length > 0 &&
+          (!form.helpTypes.includes("Other") || form.helpTypesOther.trim()) &&
+          !!form.frequency &&
+          (form.frequency !== "Other" || form.frequencyOther.trim())
+        );
       case 5:
         if (!form.supportType) return false;
         if (!isHourly) return true;
@@ -470,12 +487,30 @@ export default function BookPage() {
                                   </label>
                                 ))}
                               </div>
+                              {form.helpTypes.includes("Other") && (
+                                <div className="mt-4">
+                                  <label className={labelClass}>Please specify</label>
+                                  <input
+                                    type="text"
+                                    value={form.helpTypesOther}
+                                    onChange={(e) => update("helpTypesOther", e.target.value)}
+                                    className={inputClass}
+                                  />
+                                </div>
+                              )}
                             </div>
                             <div>
                               <label className={labelClass}>How often might support be needed? *</label>
                               <select
                                 value={form.frequency}
-                                onChange={(e) => update("frequency", e.target.value)}
+                                onChange={(e) => {
+                                  const value = e.target.value;
+                                  setForm((prev) => ({
+                                    ...prev,
+                                    frequency: value,
+                                    frequencyOther: value === "Other" ? prev.frequencyOther : "",
+                                  }));
+                                }}
                                 className={selectClass}
                               >
                                 <option value="">Select…</option>
@@ -486,6 +521,17 @@ export default function BookPage() {
                                 ))}
                               </select>
                             </div>
+                            {form.frequency === "Other" && (
+                              <div>
+                                <label className={labelClass}>Please specify</label>
+                                <input
+                                  type="text"
+                                  value={form.frequencyOther}
+                                  onChange={(e) => update("frequencyOther", e.target.value)}
+                                  className={inputClass}
+                                />
+                              </div>
+                            )}
                             <p className="text-[14px] text-[#64748b]">
                               You will choose visit times and length in the next step.
                             </p>

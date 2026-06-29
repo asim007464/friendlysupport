@@ -51,3 +51,9 @@ Full auto-transcript: `transcript.txt`
 
 ## Actions taken in the website
 See git changes after this file was added — London wording, consultation CTA, contact layout, expandable services, reduced £25 repetition, live-in pricing guide update.
+
+### Booking form — “How often might support be needed?” (step 4)
+- Added **Other** to the frequency dropdown (alongside once a week, a few times a week, every day, not sure yet).
+- When the user selects **Other**, a **Please specify** text field appears below the dropdown.
+- **Next** stays disabled until that field is filled in (same pattern as “Who is the support for?” → Other).
+- Implemented in `src/app/book/page.tsx` (`frequencyOther` field + validation on step 4).

@@ -7,6 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import FaqAccordion from "@/components/FaqAccordion";
 import EmergencyNote from "@/components/EmergencyNote";
 import { SERVICE_AREA_HERO, SERVICE_AREA_PHRASE } from "@/data/areasCopy";
+import { SITE_EMAIL } from "@/data/siteContact";
 import { FAQ_ITEMS } from "@/data/faq";
 import {
   ChatIcon,
@@ -67,7 +68,7 @@ export default function Home() {
                 loved one can stay happily at home.
               </p>
               <p className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-white/85">
-                At Friendly Support Limited, we give adults {SERVICE_AREA_PHRASE}
+                At Friendly Support Limited, we give adults {SERVICE_AREA_PHRASE}{" "}
                 the kind of everyday support most families wish they had more
                 time for. We&apos;re here for companionship, errands and light help
                 around the house. When needed, we can arrange live-in home support
@@ -214,7 +215,7 @@ export default function Home() {
             description:
               "Home help and companionship across London. Non-regulated support including errands, light domestic help and live-in care. No personal care or nursing.",
             areaServed: "London",
-            email: "hello@friendlysupport.co.uk",
+            email: SITE_EMAIL,
             url: "https://friendlysupport.co.uk",
           }),
         }}

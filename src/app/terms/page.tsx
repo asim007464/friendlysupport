@@ -2,6 +2,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SERVICE_AREA_PHRASE } from "@/data/areasCopy";
+import { SITE_EMAIL } from "@/data/siteContact";
 
 export default function TermsPage() {
   return (
@@ -42,8 +43,12 @@ export default function TermsPage() {
                 Contact
               </h2>
               <p>
-                For any questions about these terms, please{" "}
-                <Link href="/contact" className="text-[#1F7A7A] font-semibold hover:underline">
+                For any questions about these terms, please email{" "}
+                <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                  {SITE_EMAIL}
+                </a>{" "}
+                or{" "}
+                <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
                   get in touch
                 </Link>
                 .
