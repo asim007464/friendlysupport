@@ -403,7 +403,7 @@ export default function BookPage() {
                           <StepHeader
                             n={3}
                             title="Visit address"
-                            sub="Where should we visit? We support people across Greater London."
+                            sub="Where should we visit? We support people across London."
                           />
                           <div className="space-y-5">
                             <div>

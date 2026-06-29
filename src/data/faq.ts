@@ -9,7 +9,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "Where do you work?",
     answer:
-      "We support people across Greater London. Tell us your postcode when you enquire and we will confirm we can reach you.",
+      "We support people across London. Tell us your postcode when you enquire and we will confirm we can reach you.",
   },
   {
     question: "How long is a visit?",

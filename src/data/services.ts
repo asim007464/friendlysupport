@@ -32,7 +32,7 @@ export const SERVICES: Service[] = [
       "We visit you at home for conversation, hobbies, reading, games, or a quiet cup of tea. This is support in your own space. We are not taking you out, so travel is not usually added to the cost.",
     pricing: "Guide: from £25 per hour · minimum 2 hours per visit.",
     image: {
-      src: img("photo-1516307365426-b3745b6a2ebd"),
+      src: "/companionandsocialvisits.png",
       alt: "Friendly companionship visit at home with a cup of tea",
     },
     icon: "chat",
@@ -53,7 +53,7 @@ export const SERVICES: Service[] = [
       "A reliable person stays in the home while a family carer takes a break. We keep your loved one company and safe. We do not provide personal care.",
     pricing: "Guide: from £25 per hour · minimum 2 hours per visit.",
     image: {
-      src: img("photo-1609220666348-6c62fc371f5e"),
+      src: "/sittingservice.png",
       alt: "Family carer taking a break while a support worker stays with their loved one",
     },
     icon: "users",
@@ -74,7 +74,7 @@ export const SERVICES: Service[] = [
       "We travel with you to appointments and can wait with you in the waiting room. Because we go out with you, travel time and transport may be part of the cost. We confirm this before you agree.",
     pricing: "Guide: from around £30 per hour · travel costs discussed in advance.",
     image: {
-      src: img("photo-1576091160399-112ba8d25d1f"),
+      src: "/supportgettingappointments.png",
       alt: "Support worker accompanying someone to a medical appointment",
     },
     icon: "calendar",
@@ -95,7 +95,7 @@ export const SERVICES: Service[] = [
       "Help with grocery shopping (with you or on your behalf), prescriptions, posting parcels and other errands that are getting harder to manage alone.",
     pricing: "Guide: from £25 per hour · minimum 2 hours per visit.",
     image: {
-      src: img("photo-1532629345422-75155478fdbf"),
+      src: "/shopping.png",
       alt: "Help with grocery shopping and everyday errands",
     },
     icon: "shopping",
@@ -116,7 +116,7 @@ export const SERVICES: Service[] = [
       "Practical help at home: tidying, laundry, changing beds, washing up and light meal preparation. Larger jobs may need more than the minimum visit. We agree hours with you first.",
     pricing: "Guide: from £25 per hour · minimum 2 hours; longer visits by agreement.",
     image: {
-      src: img("photo-1556912172-45b7abe8b7e1"),
+      src: "/lightdomestic.png",
       alt: "Light help with meals and tidying at home",
     },
     icon: "home",
@@ -137,7 +137,7 @@ export const SERVICES: Service[] = [
       "Short or long-term live-in support: companionship, light housework, meals, shopping and checks. Not personal care or nursing. You still cover your own rent and food at home, unlike a care home where those are included.",
     pricing: "Guide: from around £1,500 per week. Exact quote in writing before you commit.",
     image: {
-      src: img("photo-1560448204-e02f11c2d0e2"),
+      src: "/livein.png",
       alt: "Comfortable home with someone nearby day and night",
     },
     icon: "moon",

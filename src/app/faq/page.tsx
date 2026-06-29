@@ -7,7 +7,7 @@ import { FAQ_ITEMS } from "@/data/faq";
 
 export const metadata: Metadata = {
   title: "FAQ | Friendly Support Limited",
-  description: "Answers about our home support services, pricing, areas, and how to book across Greater London.",
+  description: "Answers about our home support services, pricing, areas, and how to book across London.",
 };
 
 export default function FaqPage() {

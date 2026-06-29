@@ -13,6 +13,6 @@ export const TESTIMONIALS = [
   {
     quote:
       "I wanted company and a bit of help with shopping after my wife passed. No fuss, no pressure. Just kind, reliable support.",
-    attribution: "Mr P., client, Greater London",
+    attribution: "Mr P., client, London",
   },
 ];

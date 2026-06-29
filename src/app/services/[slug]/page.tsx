@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${service.title} | Friendly Support Limited`,
-    description: `${service.summary} Home help across Greater London. ${service.pricing}`,
+    description: `${service.summary} Home help across London. ${service.pricing}`,
   };
 }
 

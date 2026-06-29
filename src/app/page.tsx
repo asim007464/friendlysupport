@@ -56,9 +56,6 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#1a3d3d] via-transparent to-transparent opacity-60" />
           <div className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
             <div className="text-center">
-              <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-[#7FBF7F]">
-                Greater London
-              </p>
               <h1 className="font-heading mb-8 text-4xl font-bold leading-[1.2] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Friendly Support Limited
               </h1>
@@ -215,8 +212,8 @@ export default function Home() {
             "@type": "LocalBusiness",
             name: "Friendly Support Limited",
             description:
-              "Home help and companionship across Greater London. Non-regulated support including errands, light domestic help and live-in care. No personal care or nursing.",
-            areaServed: "Greater London",
+              "Home help and companionship across London. Non-regulated support including errands, light domestic help and live-in care. No personal care or nursing.",
+            areaServed: "London",
             email: "hello@friendlysupport.co.uk",
             url: "https://friendlysupport.co.uk",
           }),
