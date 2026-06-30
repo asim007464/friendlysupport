@@ -1,0 +1,2 @@
+Once a person is done doing the booking and all, then there should be a message that will pop up.
+Remember if our team will get back to you within 24 hours, something like that.

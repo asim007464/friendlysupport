@@ -8,16 +8,15 @@ import BookSidebar from "@/components/booking/BookSidebar";
 import TwoMonthCalendar from "@/components/booking/TwoMonthCalendar";
 import { HOURLY_MINIMUM_HOURS, HOURLY_RATE } from "@/data/pricingCopy";
 
-const TOTAL_STEPS = 7;
+const TOTAL_STEPS = 6;
 
 const STAGES = [
   { num: 1, title: "About you" },
   { num: 2, title: "Who needs support" },
   { num: 3, title: "Visit address" },
   { num: 4, title: "Kind of help" },
-  { num: 5, title: "When & how long" },
-  { num: 6, title: "Access & notes" },
-  { num: 7, title: "Consent" },
+  { num: 5, title: "When" },
+  { num: 6, title: "Consent" },
 ];
 
 const supportForOptions = [
@@ -53,15 +52,6 @@ const supportTypeOptions = [
   { value: "livein-day", label: "Live-in: full day" },
   { value: "livein-night", label: "Live-in: night (8pm–8am)" },
   { value: "livein-24", label: "Live-in: 24 hours" },
-];
-
-const hoursOptions = [
-  "2 hours (minimum)",
-  "3 hours",
-  "4 hours",
-  "5 hours",
-  "6 hours",
-  "Other / not sure",
 ];
 
 function buildTimeOptions() {
@@ -109,10 +99,7 @@ type FormData = {
   selectedDates: string[];
   timeFrom: string;
   timeTo: string;
-  hoursPerVisit: string;
   timingNotes: string;
-  accessNotes: string;
-  specialNotes: string;
   consent: boolean;
 };
 
@@ -137,10 +124,7 @@ function initialForm(): FormData {
     selectedDates: [],
     timeFrom: "",
     timeTo: "",
-    hoursPerVisit: "",
     timingNotes: "",
-    accessNotes: "",
-    specialNotes: "",
     consent: false,
   };
 }
@@ -193,10 +177,8 @@ export default function BookPage() {
       case 5:
         if (!form.supportType) return false;
         if (!isHourly) return true;
-        return !!(form.timeFrom && form.timeTo && form.hoursPerVisit);
+        return !!(form.timeFrom && form.timeTo);
       case 6:
-        return true;
-      case 7:
         return form.consent;
       default:
         return false;
@@ -264,12 +246,15 @@ export default function BookPage() {
                   </svg>
                 </div>
                 <h2 className="font-heading mb-3 text-2xl font-bold text-[#1a3d3d]">
-                  Thank you for your booking request
+                  Booking request received
                 </h2>
+                <p className="mb-4 text-[16px] font-medium leading-relaxed text-[#1a3d3d]">
+                  A member of our team will get back to you within 24 hours.
+                </p>
                 <p className="mb-6 text-[15px] leading-relaxed text-[#4a5568]">
-                  We read every enquiry carefully. Someone from Friendly Support Limited will be in
-                  touch within 24–48 hours with a warm, human reply. No scripts, no pressure, just an
-                  honest chat about what might help next.
+                  Thank you for your booking request. We read every enquiry carefully and will
+                  contact you with a warm, human reply. No scripts, no pressure — just an honest
+                  chat about what might help next.
                 </p>
                 <button
                   type="button"
@@ -533,7 +518,7 @@ export default function BookPage() {
                               </div>
                             )}
                             <p className="text-[14px] text-[#64748b]">
-                              You will choose visit times and length in the next step.
+                              You will choose visit times in the next step.
                             </p>
                           </div>
                         </>
@@ -543,7 +528,7 @@ export default function BookPage() {
                         <>
                           <StepHeader
                             n={5}
-                            title="When, how often & how long"
+                            title="When & visit times"
                             sub={
                               isHourly
                                 ? `Hourly visits are ${HOURLY_MINIMUM_HOURS} hours minimum, between 8am and 8pm. Live-in is priced separately and confirmed in writing.`
@@ -639,31 +624,19 @@ export default function BookPage() {
                                 </div>
 
                                 <div>
-                                  <label className={labelClass}>How many hours per visit? *</label>
-                                  <select
-                                    value={form.hoursPerVisit}
-                                    onChange={(e) => update("hoursPerVisit", e.target.value)}
-                                    className={selectClass}
-                                  >
-                                    <option value="">Select…</option>
-                                    {hoursOptions.map((o) => (
-                                      <option key={o} value={o}>
-                                        {o}
-                                      </option>
-                                    ))}
-                                  </select>
-                                </div>
-
-                                <div>
                                   <label className={labelClass}>
-                                    Anything else about timing? (optional)
+                                    Anything else we should know? (optional)
                                   </label>
+                                  <p className="mb-2 text-[14px] text-[#64748b]">
+                                    Key safe code, how to get in if you are out, drop shopping at the
+                                    door, or anything else about the visit.
+                                  </p>
                                   <textarea
                                     value={form.timingNotes}
                                     onChange={(e) => update("timingNotes", e.target.value)}
                                     rows={3}
                                     className={inputClass}
-                                    placeholder="e.g. key safe code, drop shopping if I am out, preferred days…"
+                                    placeholder="e.g. key safe code, drop shopping if I am out…"
                                   />
                                 </div>
                               </>
@@ -676,38 +649,6 @@ export default function BookPage() {
                         <>
                           <StepHeader
                             n={6}
-                            title="Access & special notes"
-                            sub="Help us visit safely. All fields on this step are optional."
-                          />
-                          <div className="space-y-5">
-                            <div>
-                              <label className={labelClass}>Access instructions</label>
-                              <textarea
-                                value={form.accessNotes}
-                                onChange={(e) => update("accessNotes", e.target.value)}
-                                rows={3}
-                                className={inputClass}
-                                placeholder="e.g. key safe, door code, buzzer name…"
-                              />
-                            </div>
-                            <div>
-                              <label className={labelClass}>Special requirements / notes</label>
-                              <textarea
-                                value={form.specialNotes}
-                                onChange={(e) => update("specialNotes", e.target.value)}
-                                rows={3}
-                                className={inputClass}
-                                placeholder="e.g. prefer a female support worker, dietary needs, pets at home…"
-                              />
-                            </div>
-                          </div>
-                        </>
-                      )}
-
-                      {step === 7 && (
-                        <>
-                          <StepHeader
-                            n={7}
                             title="Consent and pricing"
                             sub="Please confirm you are happy for us to use your details to reply."
                           />
