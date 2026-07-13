@@ -49,7 +49,7 @@ export default function AboutPage() {
               Our team
             </h2>
             <p className="mb-6 text-[15px] leading-relaxed text-[#4a5568]">
-              We work with a small group of self‑employed home support workers (HCAs) who are:
+              We work with a small group of experienced workers who are:
             </p>
             <ul className="mb-16 space-y-4">
               {teamPoints.map((point, i) => (

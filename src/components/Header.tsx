@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "./Logo";
-import { SITE_EMAIL } from "@/data/siteContact";
+import { SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,10 +36,10 @@ export default function Header() {
             </Link>
           ))}
           <a
-            href={`mailto:${SITE_EMAIL}`}
+            href={`tel:${SITE_PHONE_TEL}`}
             className="hidden text-[14px] font-semibold text-[#1a3d3d] hover:text-[#1F7A7A] lg:inline"
           >
-            {SITE_EMAIL}
+            {SITE_PHONE_DISPLAY}
           </a>
           <Link
             href="/book"
@@ -97,11 +97,11 @@ export default function Header() {
                 </Link>
               ))}
               <a
-                href={`mailto:${SITE_EMAIL}`}
+                href={`tel:${SITE_PHONE_TEL}`}
                 onClick={() => setMobileMenuOpen(false)}
                 className="rounded-lg px-4 py-3 text-[15px] font-medium text-[#1F7A7A] transition-colors hover:bg-white"
               >
-                {SITE_EMAIL}
+                {SITE_PHONE_DISPLAY}
               </a>
               <Link
                 href="/book"

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactBar from "@/components/ContactBar";
-import { SITE_EMAIL } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -58,7 +58,11 @@ export default function ContactPage() {
                 <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
                   {SITE_EMAIL}
                 </a>{" "}
-                or use the form below. Ready to book? Use{" "}
+                or call{" "}
+                <a href={`tel:${SITE_PHONE_TEL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                  {SITE_PHONE_DISPLAY}
+                </a>
+                , or use the form below. Ready to book? Use{" "}
                 <Link href="/book" className="font-semibold text-[#1F7A7A] hover:underline">
                   Book now
                 </Link>
@@ -83,7 +87,7 @@ export default function ContactPage() {
                   Message sent
                 </h2>
                 <p className="mb-8 text-[15px] leading-relaxed text-[#4a5568]">
-                  Thank you. We&apos;ll get back to you with a friendly reply.
+                  Thank you. We&apos;ll get back to you as soon as we can.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <button

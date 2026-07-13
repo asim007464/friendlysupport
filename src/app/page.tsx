@@ -6,38 +6,10 @@ import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
 import FaqAccordion from "@/components/FaqAccordion";
 import EmergencyNote from "@/components/EmergencyNote";
+import ServiceCards from "@/components/services/ServiceCards";
 import { SERVICE_AREA_HERO, SERVICE_AREA_PHRASE } from "@/data/areasCopy";
-import { SITE_EMAIL } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_PHONE_TEL } from "@/data/siteContact";
 import { FAQ_ITEMS } from "@/data/faq";
-import {
-  ChatIcon,
-  ShoppingIcon,
-  HomeIcon,
-  MoonIcon,
-} from "@/components/ServiceIcons";
-
-const keyPoints = [
-  {
-    title: "Companionship and social visits",
-    description: "A cuppa, a chat, a walk – whatever makes the day feel brighter.",
-    icon: ChatIcon,
-  },
-  {
-    title: "Shopping, errands and appointments",
-    description: "Help with the weekly shop, prescriptions and getting to appointments.",
-    icon: ShoppingIcon,
-  },
-  {
-    title: "Light domestic support",
-    description: "Tidying, laundry, washing up and simple meal preparation at home.",
-    icon: HomeIcon,
-  },
-  {
-    title: "Live‑in home support with no personal care",
-    description: "Short or long-term – someone in the house day and night for peace of mind.",
-    icon: MoonIcon,
-  },
-];
 
 export default function Home() {
   return (
@@ -118,26 +90,17 @@ export default function Home() {
                 Practical help and warm companionship – so life at home feels easier and less lonely.
               </p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {keyPoints.map((point, index) => {
-                const IconComponent = point.icon;
-                return (
-                  <div
-                    key={index}
-                    className="rounded-2xl border border-[#e8ecec] bg-white p-6 shadow-[0_1px_3px_rgba(26,61,61,0.08)] transition-all hover:border-[#1F7A7A]/20 hover:shadow-[0_8px_30px_rgba(26,61,61,0.1)]"
-                  >
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#1F7A7A]/10 text-[#1F7A7A]">
-                      <IconComponent className="h-6 w-6" color="currentColor" />
-                    </div>
-                    <h3 className="font-heading mb-2 text-lg font-bold text-[#1a3d3d]">
-                      {point.title}
-                    </h3>
-                    <p className="text-[15px] leading-relaxed text-[#4a5568]">
-                      {point.description}
-                    </p>
-                  </div>
-                );
-              })}
+            <ServiceCards limit={3} />
+            <div className="mt-12 text-center">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-[#1F7A7A] bg-white px-8 py-3.5 text-[15px] font-semibold text-[#1F7A7A] transition-all hover:bg-[#1F7A7A] hover:text-white"
+              >
+                See more
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
             </div>
           </div>
         </section>
@@ -216,6 +179,7 @@ export default function Home() {
               "Home help and companionship across London. Non-regulated support including errands, light domestic help and live-in care. No personal care or nursing.",
             areaServed: "London",
             email: SITE_EMAIL,
+            telephone: SITE_PHONE_TEL,
             url: "https://friendlysupport.co.uk",
           }),
         }}

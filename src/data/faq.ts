@@ -1,4 +1,4 @@
-import { SITE_EMAIL, SITE_HOURS } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export type FaqItem = { question: string; answer: string };
 
@@ -11,7 +11,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "Where do you work?",
     answer:
-      "We support people across London. Tell us your postcode when you enquire and we will confirm we can reach you.",
+      "We support people across London.",
   },
   {
     question: "How long is a visit?",
@@ -30,17 +30,17 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: "What are your office hours?",
-    answer: `We are available ${SITE_HOURS}. Email us at ${SITE_EMAIL} or call during these times. You can also leave a message and we will get back to you.`,
+    answer: `We are available ${SITE_HOURS}. Email us at ${SITE_EMAIL} or call ${SITE_PHONE_DISPLAY}. You can also leave a message and we will get back to you.`,
   },
   {
     question: "How do I book or ask a question?",
     answer:
-      `Use Book now for a care request, or Free consultation to ask a question first. You can also email ${SITE_EMAIL} or call us ${SITE_HOURS}.`,
+      `Ready to book? Use Book now. Not sure yet? Try Free consultation to ask a question first. You can also email us at ${SITE_EMAIL} or call ${SITE_PHONE_DISPLAY} — we are here ${SITE_HOURS}.`,
   },
   {
     question: "What happens after I submit the form?",
     answer:
-      "We read every enquiry personally. A member of our team will contact you within 24–48 hours (often sooner) to talk through your needs. No pressure, just a friendly conversation.",
+      "We read every enquiry personally. A member of our team will contact you within 24–48 hours (often sooner) to talk through your needs.",
   },
   {
     question: "Can I change or cancel a visit?",

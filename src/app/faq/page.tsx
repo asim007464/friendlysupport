@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FaqAccordion from "@/components/FaqAccordion";
 import { FAQ_ITEMS } from "@/data/faq";
-import { SITE_EMAIL } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export const metadata: Metadata = {
   title: "FAQ | Friendly Support Limited",
@@ -23,8 +23,12 @@ export default function FaqPage() {
               Plain answers about our non-regulated home support. Still unsure? Email{" "}
               <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
                 {SITE_EMAIL}
-              </a>{" "}
-              or{" "}
+              </a>
+              , call{" "}
+              <a href={`tel:${SITE_PHONE_TEL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                {SITE_PHONE_DISPLAY}
+              </a>
+              , or{" "}
               <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
                 request a free consultation
               </Link>

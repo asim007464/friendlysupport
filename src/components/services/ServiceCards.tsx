@@ -12,10 +12,16 @@ const iconAccents = [
   "bg-[#1F7A7A]/15 text-[#1F7A7A]",
 ];
 
-export default function ServiceCards() {
+type ServiceCardsProps = {
+  limit?: number;
+};
+
+export default function ServiceCards({ limit }: ServiceCardsProps) {
+  const services = limit ? SERVICES.slice(0, limit) : SERVICES;
+
   return (
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {SERVICES.map((service, index) => {
+      {services.map((service, index) => {
         const accent = iconAccents[index % iconAccents.length];
 
         return (

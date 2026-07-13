@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_EMAIL, SITE_EMERGENCY, SITE_HOURS } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_EMERGENCY, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export const metadata: Metadata = {
   title: "Safeguarding | Friendly Support Limited",
@@ -30,8 +30,12 @@ export default function SafeguardingPage() {
                 Contact{" "}
                 <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
                   {SITE_EMAIL}
-                </a>{" "}
-                or use our{" "}
+                </a>
+                , call{" "}
+                <a href={`tel:${SITE_PHONE_TEL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                  {SITE_PHONE_DISPLAY}
+                </a>
+                , or use our{" "}
                 <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
                   contact form
                 </Link>

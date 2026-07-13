@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookSidebar from "@/components/booking/BookSidebar";
 import TwoMonthCalendar from "@/components/booking/TwoMonthCalendar";
-import { HOURLY_MINIMUM_HOURS, HOURLY_RATE } from "@/data/pricingCopy";
+import { HOURLY_MINIMUM_HOURS } from "@/data/pricingCopy";
 
 const TOTAL_STEPS = 6;
 
@@ -248,25 +248,9 @@ export default function BookPage() {
                 <h2 className="font-heading mb-3 text-2xl font-bold text-[#1a3d3d]">
                   Booking request received
                 </h2>
-                <p className="mb-4 text-[16px] font-medium leading-relaxed text-[#1a3d3d]">
-                  A member of our team will get back to you within 24 hours.
+                <p className="text-[16px] font-medium leading-relaxed text-[#1a3d3d]">
+                  A member of our team will get back to you within 48 hours.
                 </p>
-                <p className="mb-6 text-[15px] leading-relaxed text-[#4a5568]">
-                  Thank you for your booking request. We read every enquiry carefully and will
-                  contact you with a warm, human reply. No scripts, no pressure — just an honest
-                  chat about what might help next.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSubmitted(false);
-                    setStep(1);
-                    setForm(initialForm());
-                  }}
-                  className="rounded-lg bg-[#1F7A7A] px-6 py-3 text-[15px] font-semibold text-white hover:bg-[#1a6565]"
-                >
-                  Send another request
-                </button>
               </div>
             ) : (
               <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
@@ -649,7 +633,7 @@ export default function BookPage() {
                         <>
                           <StepHeader
                             n={6}
-                            title="Consent and pricing"
+                            title="Consent"
                             sub="Please confirm you are happy for us to use your details to reply."
                           />
                           <div className="rounded-xl border-2 border-[#e5e7eb] bg-[#F8FAFA] p-5">
@@ -661,11 +645,8 @@ export default function BookPage() {
                                 className="mt-1 h-[18px] w-[18px] rounded border-[#d1d5db] text-[#1F7A7A]"
                               />
                               <span className="text-[15px] leading-relaxed text-[#374151]">
-                                I understand hourly visits are {HOURLY_RATE} with a minimum of{" "}
-                                {HOURLY_MINIMUM_HOURS} hours per booking, and that live-in support
-                                is priced separately (from around £1,500 per week as a guide). We
-                                will confirm exact costs in writing. I am happy for Friendly Support
-                                Limited to use my details to respond, in line with your{" "}
+                                I am happy for Friendly Support Limited to use my details to
+                                respond, in line with your{" "}
                                 <Link href="/privacy" className="font-semibold text-[#1F7A7A] hover:underline">
                                   privacy policy
                                 </Link>
