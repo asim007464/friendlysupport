@@ -26,8 +26,9 @@ export type Service = {
 export const SERVICES: Service[] = [
   {
     slug: "companionship",
-    title: "Companionship and social visits",
-    summary: "A cuppa, a chat, a walk. Friendly company at home.",
+    title: "Companionship and Social Visits",
+    summary:
+      "Friendly visits for conversation, a cup of tea, a gentle walk, or simply the reassurance of kind and reliable company at home.",
     details:
       "We visit you at home for conversation, hobbies, reading, games, or a quiet cup of tea. This is support in your own space. We are not taking you out, so travel is not usually added to the cost.",
     pricing: "Guide: from £25 per hour · minimum 2 hours per visit.",
@@ -47,8 +48,9 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "sitting-service",
-    title: "Sitting service for family carers",
-    summary: "We stay with your loved one so you can rest or run errands.",
+    title: "Sitting Service for Family Carers",
+    summary:
+      "We can stay with your loved one while you rest, run errands, attend appointments, or take some much-needed time for yourself.",
     details:
       "A reliable person stays in the home while a family carer takes a break. We keep your loved one company and safe. We do not provide personal care.",
     pricing: "Guide: from £25 per hour · minimum 2 hours per visit.",
@@ -68,8 +70,9 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "appointment-support",
-    title: "Support getting to appointments",
-    summary: "Company for GP, hospital, dental or other appointments.",
+    title: "Support Getting to Appointments",
+    summary:
+      "Reliable company and practical assistance for GP, hospital, dental and other appointments, helping the day feel easier and less stressful.",
     details:
       "We travel with you to appointments and can wait with you in the waiting room. Because we go out with you, travel time and transport may be part of the cost. We confirm this before you agree.",
     pricing: "Guide: from around £30 per hour · travel costs discussed in advance.",
@@ -89,8 +92,9 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "shopping-errands",
-    title: "Shopping and errands",
-    summary: "Weekly shop, prescriptions, post and everyday jobs.",
+    title: "Shopping and Errands",
+    summary:
+      "Practical help with the weekly shop, prescriptions, post and everyday errands, carried out with care, patience and reliability.",
     details:
       "Help with grocery shopping (with you or on your behalf), prescriptions, posting parcels and other errands that are getting harder to manage alone.",
     pricing: "Guide: from £25 per hour · minimum 2 hours per visit.",
@@ -110,8 +114,9 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "domestic-support",
-    title: "Light domestic support",
-    summary: "Tidying, laundry, washing up and simple meals.",
+    title: "Light Domestic Support",
+    summary:
+      "Gentle help around the home, including tidying, laundry, washing-up and simple meal preparation, so the home feels calm, comfortable and manageable.",
     details:
       "Practical help at home: tidying, laundry, changing beds, washing up and light meal preparation. Larger jobs may need more than the minimum visit. We agree hours with you first.",
     pricing: "Guide: from £25 per hour · minimum 2 hours; longer visits by agreement.",
@@ -131,8 +136,9 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "live-in-support",
-    title: "Live-in home support (no personal care)",
-    summary: "Someone in the house day and night for peace of mind.",
+    title: "Live-In Home Support — No Personal Care",
+    summary:
+      "A reassuring presence in the home, day and night, offering companionship and practical support. This service does not include personal care, nursing or medical tasks.",
     details:
       "Short or long-term live-in support: companionship, light housework, meals, shopping and checks. Not personal care or nursing. You still cover your own rent and food at home, unlike a care home where those are included.",
     pricing: "Guide: from around £1,500 per week. Exact quote in writing before you commit.",

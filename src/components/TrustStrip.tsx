@@ -1,15 +1,15 @@
 const trustPoints = [
   {
-    title: "Non-regulated support",
-    text: "Companionship and practical help at home. Not personal care or nursing.",
+    title: "Practical, non-regulated support",
+    text: "Companionship and everyday help at home, without personal care, nursing or medical tasks.",
   },
   {
-    title: "Vetted support workers",
-    text: "Interviewed, background-checked and trained for dignity at home.",
+    title: "Carefully selected support workers",
+    text: "Our support workers are interviewed, DBS-checked and prepared to offer respectful, dependable support at home.",
   },
   {
-    title: "Clear pricing in writing",
-    text: "We confirm costs in writing before you agree. No surprises.",
+    title: "Clear pricing, agreed in writing",
+    text: "We confirm the cost in writing before you decide to proceed, so there are no unexpected charges.",
   },
 ];
 

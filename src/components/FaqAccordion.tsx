@@ -30,8 +30,15 @@ export default function FaqAccordion({ items }: { items: FaqItem[] }) {
               </svg>
             </button>
             {isOpen && (
-              <div className="border-t border-[#f0f0f0] px-5 py-4">
-                <p className="text-[15px] leading-relaxed text-[#4a5568]">{item.answer}</p>
+              <div className="space-y-3 border-t border-[#f0f0f0] px-5 py-4">
+                {item.answer.split("\n\n").map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 48)}
+                    className="text-[15px] leading-relaxed text-[#4a5568]"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             )}
           </div>

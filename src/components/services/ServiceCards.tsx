@@ -51,12 +51,13 @@ export default function ServiceCards({ limit }: ServiceCardsProps) {
               </h3>
               <p className="text-[15px] leading-relaxed text-[#4a5568]">{service.summary}</p>
               <span className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold text-[#1F7A7A]">
-                View details & pricing
+                View details & pricing →
                 <svg
                   className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>

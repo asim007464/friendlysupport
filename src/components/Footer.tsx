@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { SERVICE_AREA_SHORT } from "@/data/areasCopy";
 import { SITE_EMAIL, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function Footer() {
@@ -34,7 +33,7 @@ export default function Footer() {
             <Logo size="md" showTagline variant="dark" />
             <div className="mt-6 flex items-center gap-2 rounded-lg bg-white/5 px-4 py-3 backdrop-blur-sm">
               <span className="text-sm font-medium text-white/90">
-                Serving {SERVICE_AREA_SHORT}
+                Supporting clients across London
               </span>
             </div>
           </div>
@@ -80,7 +79,7 @@ export default function Footer() {
               <p className="text-white/60">{SITE_HOURS}</p>
             </div>
             <p className="mb-6 text-[15px] leading-relaxed text-white/70">
-              Ready to talk about support at home? We&apos;re here to help with a
+              Ready to talk about support at home? We are here to help with a
               friendly, no-pressure conversation.
             </p>
             <Link

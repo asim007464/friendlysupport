@@ -7,9 +7,9 @@ import Testimonials from "@/components/Testimonials";
 import FaqAccordion from "@/components/FaqAccordion";
 import EmergencyNote from "@/components/EmergencyNote";
 import ServiceCards from "@/components/services/ServiceCards";
-import { SERVICE_AREA_HERO, SERVICE_AREA_PHRASE } from "@/data/areasCopy";
+import { SERVICE_AREA_HERO } from "@/data/areasCopy";
 import { SITE_EMAIL, SITE_PHONE_TEL } from "@/data/siteContact";
-import { FAQ_ITEMS } from "@/data/faq";
+import { HOME_FAQ_ITEMS } from "@/data/faq";
 
 export default function Home() {
   return (
@@ -29,44 +29,48 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#1a3d3d] via-transparent to-transparent opacity-60" />
           <div className="relative mx-auto max-w-4xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
             <div className="text-center">
-              <h1 className="font-heading mb-8 text-4xl font-bold leading-[1.2] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="font-heading mb-6 text-4xl font-bold leading-[1.2] tracking-tight text-white sm:mb-8 sm:text-5xl lg:text-6xl">
                 Friendly Support Limited
               </h1>
               <p className="mb-4 text-xl font-medium text-[#6BAED6] sm:text-2xl">
                 {SERVICE_AREA_HERO}
               </p>
               <p className="mx-auto mb-12 max-w-2xl text-lg leading-relaxed text-white/95">
-                Friendly faces, practical help and time to talk, so you or your
-                loved one can stay happily at home.
-              </p>
-              <p className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-white/85">
-                At Friendly Support Limited, we give adults {SERVICE_AREA_PHRASE}{" "}
-                the kind of everyday support most families wish they had more
-                time for. We&apos;re here for companionship, errands and light help
-                around the house. When needed, we can arrange live-in home support
-                so life feels easier and a lot less lonely.
+                Friendly companionship, errands and light domestic help —
+                supporting you or your loved one to feel comfortable, cared for
+                and less alone at home.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
                   href="/book"
                   className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-base font-semibold text-[#1F7A7A] shadow-lg transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-xl"
                 >
-                  Book now
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  Book Now
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </Link>
                 <Link
                   href="/contact"
                   className="inline-flex items-center rounded-xl border-2 border-white px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 hover:backdrop-blur-sm"
                 >
-                  Free consultation
+                  Free Consultation
                 </Link>
                 <Link
                   href="/services"
                   className="inline-flex items-center rounded-xl border-2 border-white/60 px-6 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 hover:backdrop-blur-sm"
                 >
-                  Our services
+                  View Services
                 </Link>
               </div>
             </div>
@@ -80,14 +84,15 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
               <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#1F7A7A]">
-                How we can help
+                How We Can Help
               </p>
               <h2 className="font-heading mb-4 text-3xl font-bold text-[#1a3d3d] sm:text-4xl lg:text-5xl">
-                Support That Makes a Difference
+                Support That Makes Everyday Life Easier
               </h2>
               <div className="mx-auto h-1 w-12 rounded-full bg-[#7FBF7F]" />
               <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#5a6575]">
-                Practical help and warm companionship – so life at home feels easier and less lonely.
+                Warm companionship and practical assistance, shaped around the
+                support you or your loved one needs at home.
               </p>
             </div>
             <ServiceCards limit={3} />
@@ -96,9 +101,19 @@ export default function Home() {
                 href="/services"
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-[#1F7A7A] bg-white px-8 py-3.5 text-[15px] font-semibold text-[#1F7A7A] transition-all hover:bg-[#1F7A7A] hover:text-white"
               >
-                See more
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                View More Services
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
                 </svg>
               </Link>
             </div>
@@ -111,13 +126,24 @@ export default function Home() {
         <section className="relative bg-white py-20 sm:py-28">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <div className="mb-10 text-center">
-              <h2 className="font-heading text-3xl font-bold text-[#1a3d3d] sm:text-4xl">Common questions</h2>
-              <p className="mt-3 text-[16px] text-[#5a6575]">Quick answers below. See our full FAQ page for more.</p>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#1F7A7A]">
+                Common Questions
+              </p>
+              <h2 className="font-heading text-3xl font-bold text-[#1a3d3d] sm:text-4xl">
+                Common Questions
+              </h2>
+              <p className="mt-3 text-[16px] text-[#5a6575]">
+                Helpful answers to the questions people most often ask before
+                arranging support.
+              </p>
             </div>
-            <FaqAccordion items={FAQ_ITEMS.slice(0, 4)} />
+            <FaqAccordion items={HOME_FAQ_ITEMS} />
             <p className="mt-8 text-center">
-              <Link href="/faq" className="font-semibold text-[#1F7A7A] hover:underline">
-                View all questions →
+              <Link
+                href="/faq"
+                className="font-semibold text-[#1F7A7A] hover:underline"
+              >
+                View All Questions →
               </Link>
             </p>
           </div>
@@ -131,36 +157,24 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.04%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-60" />
           <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
             <h2 className="font-heading mb-6 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-              Not sure where to start?
+              Not Sure Where to Start?
             </h2>
             <p className="mb-10 text-xl leading-relaxed text-white/90">
-              Book a visit or request a free consultation. We&apos;re happy to help.
+              Tell us what you need, or what you are worried about, and we will
+              guide you through the next step with care and clarity.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/book"
                 className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#1F7A7A] shadow-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/95 hover:shadow-2xl"
               >
-                Book now
-                <svg
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
+                Book Now →
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center rounded-xl border-2 border-white px-8 py-4 text-base font-semibold text-white transition-all hover:bg-white/10"
               >
-                Free consultation
+                Free Consultation
               </Link>
             </div>
           </div>
@@ -176,7 +190,7 @@ export default function Home() {
             "@type": "LocalBusiness",
             name: "Friendly Support Limited",
             description:
-              "Home help and companionship across London. Non-regulated support including errands, light domestic help and live-in care. No personal care or nursing.",
+              "Warm, reliable home support across London. Non-regulated companionship, errands and light domestic help. No personal care or nursing.",
             areaServed: "London",
             email: SITE_EMAIL,
             telephone: SITE_PHONE_TEL,

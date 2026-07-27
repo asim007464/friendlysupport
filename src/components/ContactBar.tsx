@@ -6,15 +6,25 @@ export default function ContactBar({ className = "" }: { className?: string }) {
   return (
     <div className={`space-y-4 text-[15px] text-[#4a5568] ${className}`}>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">Email</p>
-        <a href={`mailto:${SITE_EMAIL}`} className="mt-1 block font-medium text-[#1F7A7A] hover:underline">
+        <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">
+          Email
+        </p>
+        <a
+          href={`mailto:${SITE_EMAIL}`}
+          className="mt-1 block font-medium text-[#1F7A7A] hover:underline"
+        >
           {SITE_EMAIL}
         </a>
       </div>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">Phone</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">
+          Phone
+        </p>
         {SITE_PHONE_TEL ? (
-          <a href={`tel:${SITE_PHONE_TEL}`} className="mt-1 block font-medium text-[#1a3d3d] hover:text-[#1F7A7A]">
+          <a
+            href={`tel:${SITE_PHONE_TEL}`}
+            className="mt-1 block font-medium text-[#1a3d3d] hover:text-[#1F7A7A]"
+          >
             {SITE_PHONE_DISPLAY}
           </a>
         ) : (
@@ -22,16 +32,33 @@ export default function ContactBar({ className = "" }: { className?: string }) {
         )}
       </div>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">Office hours</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">
+          Office Hours
+        </p>
         <p className="mt-1 font-medium text-[#1a3d3d]">{SITE_HOURS}</p>
       </div>
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">Area</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-[#94a3b8]">
+          Area Covered
+        </p>
         <p className="mt-1 font-medium text-[#1a3d3d]">{SERVICE_AREA_SHORT}</p>
       </div>
-      <Link href="/faq" className="inline-block text-[14px] font-semibold text-[#1F7A7A] hover:underline">
-        Common questions →
-      </Link>
+
+      <div className="border-t border-[#e8ecec] pt-4">
+        <p className="font-heading text-[15px] font-semibold text-[#1a3d3d]">
+          Need a quick answer?
+        </p>
+        <p className="mt-2 text-[14px] leading-relaxed text-[#4a5568]">
+          You may find helpful information on our Frequently Asked Questions
+          page.
+        </p>
+        <Link
+          href="/faq"
+          className="mt-3 inline-block text-[14px] font-semibold text-[#1F7A7A] hover:underline"
+        >
+          View Common Questions →
+        </Link>
+      </div>
     </div>
   );
 }
