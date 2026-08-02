@@ -3,7 +3,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TrustStrip from "@/components/TrustStrip";
 import HowItWorks from "@/components/HowItWorks";
-import Testimonials from "@/components/Testimonials";
 import FaqAccordion from "@/components/FaqAccordion";
 import EmergencyNote from "@/components/EmergencyNote";
 import ServiceCards from "@/components/services/ServiceCards";
@@ -121,7 +120,6 @@ export default function Home() {
         </section>
 
         <HowItWorks />
-        <Testimonials />
 
         <section className="relative bg-white py-20 sm:py-28">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

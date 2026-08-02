@@ -40,8 +40,8 @@ const values = [
 ];
 
 const teamPoints = [
-  "Properly interviewed and background-checked",
-  "DBS checked, insured and appropriately trained",
+  "Properly interviewed and DBS-checked",
+  "Insured and appropriately trained",
   "Selected for their patience, warmth and professionalism",
   "Committed to treating every person with dignity and respect",
   "Matched, wherever possible, with the same clients so trust can grow over time",

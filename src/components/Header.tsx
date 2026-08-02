@@ -18,13 +18,12 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#e8ecec] bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        {/* Logo */}
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:gap-4 sm:px-6 lg:px-8">
         <Link href="/" className="shrink-0 transition-opacity hover:opacity-85">
           <Logo size="md" />
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav: Home | Services | About | FAQ | Contact | Phone | Book Now */}
         <nav className="hidden items-center gap-6 lg:flex">
           {navLinks.map((link) => (
             <Link
@@ -37,7 +36,7 @@ export default function Header() {
           ))}
           <a
             href={`tel:${SITE_PHONE_TEL}`}
-            className="hidden text-[14px] font-semibold text-[#1a3d3d] hover:text-[#1F7A7A] lg:inline"
+            className="text-[14px] font-semibold text-[#1a3d3d] hover:text-[#1F7A7A]"
           >
             {SITE_PHONE_DISPLAY}
           </a>
@@ -45,39 +44,46 @@ export default function Header() {
             href="/book"
             className="ml-1 rounded-lg bg-[#1F7A7A] px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
           >
-            Book now
+            Book Now
           </Link>
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#e8ecec] transition-colors hover:bg-[#F5F7F7] lg:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={mobileMenuOpen}
-        >
-          <div className="flex flex-col gap-1.5">
-            <span
-              className={`block h-0.5 w-5 bg-[#1F7A7A] transition-all duration-200 ${
-                mobileMenuOpen ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-5 bg-[#1F7A7A] transition-all duration-200 ${
-                mobileMenuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-5 bg-[#1F7A7A] transition-all duration-200 ${
-                mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
-          </div>
-        </button>
+        {/* Mobile: click-to-call phone + menu */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href={`tel:${SITE_PHONE_TEL}`}
+            className="rounded-lg px-2 py-2 text-[13px] font-semibold text-[#1F7A7A] sm:text-[14px]"
+          >
+            {SITE_PHONE_DISPLAY}
+          </a>
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#e8ecec] transition-colors hover:bg-[#F5F7F7]"
+            aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <div className="flex flex-col gap-1.5">
+              <span
+                className={`block h-0.5 w-5 bg-[#1F7A7A] transition-all duration-200 ${
+                  mobileMenuOpen ? "translate-y-2 rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-5 bg-[#1F7A7A] transition-all duration-200 ${
+                  mobileMenuOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-5 bg-[#1F7A7A] transition-all duration-200 ${
+                  mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
+                }`}
+              />
+            </div>
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={`grid transition-[grid-template-rows] duration-300 ease-out lg:hidden ${
           mobileMenuOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
@@ -108,7 +114,7 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-2 rounded-lg bg-[#1F7A7A] px-4 py-3 text-center text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
               >
-                Book now
+                Book Now
               </Link>
             </div>
           </nav>

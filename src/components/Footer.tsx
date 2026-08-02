@@ -9,7 +9,7 @@ export default function Footer() {
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
-    { href: "/book", label: "Book now" },
+    { href: "/book", label: "Book Now" },
   ];
 
   return (
@@ -86,7 +86,7 @@ export default function Footer() {
               href="/book"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-[15px] font-semibold text-[#1F7A7A] transition-all hover:bg-white/95 hover:shadow-lg"
             >
-              Book now
+              Book Now
               <svg
                 className="h-4 w-4"
                 fill="none"

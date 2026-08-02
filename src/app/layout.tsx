@@ -18,7 +18,7 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Friendly Support Limited | Home Help & Companionship in London",
   description:
-    "Practical home help and companionship across London. Friendly Support Limited offers errands, light domestic support and live-in home care (no personal care). Book a free consultation.",
+    "Practical home help and companionship across London. Friendly Support Limited offers errands, light domestic support and live-in home support (no personal care). Book a free consultation.",
 };
 
 export default function RootLayout({
