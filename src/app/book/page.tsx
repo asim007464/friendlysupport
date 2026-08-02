@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -130,7 +130,11 @@ function initialForm(): FormData {
 }
 
 export default function BookPage() {
+  const formTs = useRef(Date.now());
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormData>(initialForm);
 
@@ -215,9 +219,48 @@ export default function BookPage() {
     update("selectedDates", dates);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!canProceed() || submitting) return;
+    setFormError("");
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          website: honeypot,
+          formTs: formTs.current,
+        }),
+      });
+      const data = (await res.json()) as {
+        ok?: boolean;
+        error?: string;
+        errors?: Record<string, string>;
+      };
+
+      if (data.ok) {
+        setSubmitted(true);
+        return;
+      }
+
+      const firstFieldError = data.errors
+        ? Object.values(data.errors)[0]
+        : undefined;
+      setFormError(
+        firstFieldError ||
+          data.error ||
+          "Sorry, we could not send your request just now. Please email info@friendlysupportlimited.co.uk or call 07384 443845."
+      );
+    } catch {
+      setFormError(
+        "Sorry, we could not send your request just now. Please email info@friendlysupportlimited.co.uk or call 07384 443845."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -270,7 +313,30 @@ export default function BookPage() {
                     </div>
                   </div>
 
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit} className="relative">
+                    <input
+                      type="text"
+                      name="website"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute",
+                        left: "-9999px",
+                        width: 1,
+                        height: 1,
+                      }}
+                    />
+                    {formError && (
+                      <p
+                        role="alert"
+                        className="mb-6 rounded-xl border border-[#fecaca] bg-[#fef2f2] px-4 py-3 text-[14px] text-[#b91c1c]"
+                      >
+                        {formError}
+                      </p>
+                    )}
                     <div className="rounded-2xl border border-[#e8ecec] bg-white p-6 shadow-sm sm:p-8">
                       {step === 1 && (
                         <>
@@ -686,14 +752,14 @@ export default function BookPage() {
                         ) : (
                           <button
                             type="submit"
-                            disabled={!canProceed()}
+                            disabled={!canProceed() || submitting}
                             className={`rounded-xl px-8 py-3 text-[15px] font-semibold transition-all ${
-                              canProceed()
+                              canProceed() && !submitting
                                 ? "bg-[#1F7A7A] text-white shadow-md hover:bg-[#1a6565]"
                                 : "cursor-not-allowed bg-[#e5e7eb] text-[#94a3b8]"
                             }`}
                           >
-                            Send this to Friendly Support
+                            {submitting ? "Sending…" : "Send this to Friendly Support"}
                           </button>
                         )}
                       </div>

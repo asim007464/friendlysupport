@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,7 +8,12 @@ import ContactBar from "@/components/ContactBar";
 import { SITE_EMAIL, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function ContactPage() {
+  const formTs = useRef(Date.now());
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [honeypot, setHoneypot] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -17,9 +22,48 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setFormError("");
+    setFieldErrors({});
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          website: honeypot,
+          formTs: formTs.current,
+        }),
+      });
+      const data = (await res.json()) as {
+        ok?: boolean;
+        error?: string;
+        errors?: Record<string, string>;
+      };
+
+      if (data.ok) {
+        setSubmitted(true);
+        return;
+      }
+      if (data.errors) {
+        setFieldErrors(data.errors);
+        setFormError("Please check the highlighted fields and try again.");
+      } else {
+        setFormError(
+          data.error ||
+            "Sorry, we could not send your message just now. Please email info@friendlysupportlimited.co.uk or call 07384 443845."
+        );
+      }
+    } catch {
+      setFormError(
+        "Sorry, we could not send your message just now. Please email info@friendlysupportlimited.co.uk or call 07384 443845."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -27,6 +71,12 @@ export default function ContactPage() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value ?? "" }));
+    setFieldErrors((prev) => {
+      if (!prev[name]) return prev;
+      const next = { ...prev };
+      delete next[name];
+      return next;
+    });
   };
 
   const canSubmit =
@@ -34,13 +84,22 @@ export default function ContactPage() {
     formData.lastName.trim() &&
     formData.email.trim() &&
     formData.phone.trim() &&
-    formData.message.trim();
+    formData.message.trim() &&
+    !submitting;
 
   const inputClass =
     "w-full rounded-xl border border-[#e0e6e8] bg-white px-4 py-3.5 text-[16px] text-[#1a3d3d] transition-all focus:border-[#1F7A7A] focus:outline-none focus:ring-2 focus:ring-[#1F7A7A]/25";
+  const inputErrorClass =
+    "w-full rounded-xl border border-[#dc2626] bg-white px-4 py-3.5 text-[16px] text-[#1a3d3d] transition-all focus:border-[#dc2626] focus:outline-none focus:ring-2 focus:ring-[#dc2626]/25";
   const labelClass = "mb-2 block text-[15px] font-semibold text-[#1a3d3d]";
   const cardClass =
     "rounded-2xl border border-[#e8ecec] bg-white p-6 shadow-[0_2px_12px_rgba(26,61,61,0.08)] sm:p-8";
+  const fieldHint = (name: string) =>
+    fieldErrors[name] ? (
+      <p id={`${name}-error`} className="mt-1.5 text-[13px] text-[#dc2626]" role="alert">
+        {fieldErrors[name]}
+      </p>
+    ) : null;
 
   return (
     <div className="min-h-screen bg-[#F8FAFA]">
@@ -118,6 +177,10 @@ export default function ContactPage() {
                         type="button"
                         onClick={() => {
                           setSubmitted(false);
+                          setFormError("");
+                          setFieldErrors({});
+                          setHoneypot("");
+                          formTs.current = Date.now();
                           setFormData({
                             firstName: "",
                             lastName: "",
@@ -139,7 +202,7 @@ export default function ContactPage() {
                     </div>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className={cardClass}>
+                  <form onSubmit={handleSubmit} className={`${cardClass} relative`}>
                     <h2 className="font-heading mb-3 text-xl font-bold text-[#1a3d3d] sm:text-2xl">
                       Send Us a Message
                     </h2>
@@ -149,6 +212,32 @@ export default function ContactPage() {
                       easier it will be for us to understand how we may be able
                       to help.
                     </p>
+
+                    {/* Honeypot — visually hidden; bots often fill it */}
+                    <input
+                      type="text"
+                      name="website"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      style={{
+                        position: "absolute",
+                        left: "-9999px",
+                        width: 1,
+                        height: 1,
+                      }}
+                    />
+
+                    {formError && (
+                      <p
+                        role="alert"
+                        className="mb-6 rounded-xl border border-[#fecaca] bg-[#fef2f2] px-4 py-3 text-[14px] text-[#b91c1c]"
+                      >
+                        {formError}
+                      </p>
+                    )}
 
                     <div className="grid gap-6 sm:grid-cols-2">
                       <div>
@@ -163,8 +252,11 @@ export default function ContactPage() {
                           autoComplete="given-name"
                           value={formData.firstName}
                           onChange={handleChange}
-                          className={inputClass}
+                          aria-invalid={!!fieldErrors.firstName}
+                          aria-describedby={fieldErrors.firstName ? "firstName-error" : undefined}
+                          className={fieldErrors.firstName ? inputErrorClass : inputClass}
                         />
+                        {fieldHint("firstName")}
                       </div>
                       <div>
                         <label htmlFor="lastName" className={labelClass}>
@@ -178,8 +270,11 @@ export default function ContactPage() {
                           autoComplete="family-name"
                           value={formData.lastName}
                           onChange={handleChange}
-                          className={inputClass}
+                          aria-invalid={!!fieldErrors.lastName}
+                          aria-describedby={fieldErrors.lastName ? "lastName-error" : undefined}
+                          className={fieldErrors.lastName ? inputErrorClass : inputClass}
                         />
+                        {fieldHint("lastName")}
                       </div>
                       <div>
                         <label htmlFor="email" className={labelClass}>
@@ -193,8 +288,11 @@ export default function ContactPage() {
                           autoComplete="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className={inputClass}
+                          aria-invalid={!!fieldErrors.email}
+                          aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                          className={fieldErrors.email ? inputErrorClass : inputClass}
                         />
+                        {fieldHint("email")}
                       </div>
                       <div>
                         <label htmlFor="phone" className={labelClass}>
@@ -208,8 +306,11 @@ export default function ContactPage() {
                           autoComplete="tel"
                           value={formData.phone}
                           onChange={handleChange}
-                          className={inputClass}
+                          aria-invalid={!!fieldErrors.phone}
+                          aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
+                          className={fieldErrors.phone ? inputErrorClass : inputClass}
                         />
+                        {fieldHint("phone")}
                       </div>
                     </div>
                     <div className="mt-6">
@@ -223,8 +324,11 @@ export default function ContactPage() {
                         required
                         value={formData.message}
                         onChange={handleChange}
-                        className={inputClass}
+                        aria-invalid={!!fieldErrors.message}
+                        aria-describedby={fieldErrors.message ? "message-error" : undefined}
+                        className={fieldErrors.message ? inputErrorClass : inputClass}
                       />
+                      {fieldHint("message")}
                       <p className="mt-2 text-[14px] leading-relaxed text-[#718096]">
                         In your message, please tell us what kind of support you
                         are looking for, where in London support is needed, and
@@ -250,7 +354,7 @@ export default function ContactPage() {
                             : "cursor-not-allowed bg-[#e8ecec] text-[#94a3b8]"
                         }`}
                       >
-                        Send My Enquiry
+                        {submitting ? "Sending…" : "Send My Enquiry"}
                       </button>
                       <Link
                         href="/book"
