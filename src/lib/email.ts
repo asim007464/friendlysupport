@@ -20,7 +20,7 @@ const FROM_ADDRESS =
   process.env.MAIL_FROM ||
   "Friendly Support Limited <no-reply@friendlysupportlimited.co.uk>";
 
-const PHONE = "07384 443845";
+const PHONE = "07384 440748";
 const HOURS = "Monday to Sunday, 10am\u20139pm";
 
 function getResend() {

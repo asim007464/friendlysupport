@@ -252,11 +252,11 @@ export default function BookPage() {
       setFormError(
         firstFieldError ||
           data.error ||
-          "Sorry, we could not send your request just now. Please email info@friendlysupportlimited.co.uk or call 07384 443845."
+          "Sorry, we could not send your request just now. Please email info@friendlysupportlimited.co.uk or call 07384 440748."
       );
     } catch {
       setFormError(
-        "Sorry, we could not send your request just now. Please email info@friendlysupportlimited.co.uk or call 07384 443845."
+        "Sorry, we could not send your request just now. Please email info@friendlysupportlimited.co.uk or call 07384 440748."
       );
     } finally {
       setSubmitting(false);

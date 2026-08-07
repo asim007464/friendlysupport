@@ -54,12 +54,12 @@ export default function ContactPage() {
       } else {
         setFormError(
           data.error ||
-            "Sorry, we could not send your message just now. Please email info@friendlysupportlimited.co.uk or call 07384 443845."
+            "Sorry, we could not send your message just now. Please email info@friendlysupportlimited.co.uk or call 07384 440748."
         );
       }
     } catch {
       setFormError(
-        "Sorry, we could not send your message just now. Please email info@friendlysupportlimited.co.uk or call 07384 443845."
+        "Sorry, we could not send your message just now. Please email info@friendlysupportlimited.co.uk or call 07384 440748."
       );
     } finally {
       setSubmitting(false);

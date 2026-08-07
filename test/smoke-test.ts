@@ -18,7 +18,7 @@ const goodEnquiry = enquirySchema.safeParse({
   firstName: "  Sam  ",
   lastName: "Jones",
   email: "  SAM@Example.COM ",
-  phone: "+44 7384 443845",
+  phone: "+44 7384 440748",
   message: "I am looking for companionship visits for my mother in Harrow.",
   formTs: Date.now() - 20000,
 });
@@ -66,8 +66,8 @@ if (!badEnquiry.success) {
 
 console.log("\nphone formats");
 for (const p of [
-  "07384 443845",
-  "+447384443845",
+  "07384 440748",
+  "+447384440748",
   "(020) 7946 0000",
   "020-7946-0000",
 ]) {
