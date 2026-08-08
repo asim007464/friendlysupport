@@ -8,6 +8,12 @@ import { createHash } from "crypto";
 
 let adminClient: SupabaseClient | null = null;
 
+export function isSupabaseConfigured(): boolean {
+  return Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+}
+
 export function getSupabaseAdmin(): SupabaseClient {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -71,6 +77,7 @@ export type BookingInsert = {
 };
 
 export async function saveEnquiry(row: EnquiryInsert) {
+  if (!isSupabaseConfigured()) return null;
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from("enquiries")
@@ -83,6 +90,7 @@ export async function saveEnquiry(row: EnquiryInsert) {
 }
 
 export async function saveBookingRequest(row: BookingInsert) {
+  if (!isSupabaseConfigured()) return null;
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from("booking_requests")
@@ -95,6 +103,7 @@ export async function saveBookingRequest(row: BookingInsert) {
 }
 
 export async function markEnquiryEmailed(id: string) {
+  if (!isSupabaseConfigured()) return;
   const supabase = getSupabaseAdmin();
   await supabase
     .from("enquiries")
@@ -103,6 +112,7 @@ export async function markEnquiryEmailed(id: string) {
 }
 
 export async function markBookingEmailed(id: string) {
+  if (!isSupabaseConfigured()) return;
   const supabase = getSupabaseAdmin();
   await supabase
     .from("booking_requests")

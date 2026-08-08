@@ -88,17 +88,10 @@ export async function POST(req: Request) {
       ip_hash: hashIp(ip),
       status: "new",
     });
-    enquiryId = saved.id;
+    enquiryId = saved?.id;
   } catch (err) {
+    // Storage is optional — still try to email the office.
     console.error("[enquiry] supabase insert failed", err);
-    return NextResponse.json(
-      {
-        ok: false,
-        error:
-          "Sorry, we could not send your message just now. Please email info@friendlysupportlimited.co.uk or call 07384 440748.",
-      },
-      { status: 500 }
-    );
   }
 
   try {
@@ -106,7 +99,6 @@ export async function POST(req: Request) {
     if (enquiryId) await markEnquiryEmailed(enquiryId);
   } catch (err) {
     console.error("[enquiry] office notification failed", err);
-    // Row is already saved — still tell the user to phone/email as backup
     return NextResponse.json(
       {
         ok: false,

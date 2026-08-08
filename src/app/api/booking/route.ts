@@ -107,17 +107,10 @@ export async function POST(req: Request) {
       ip_hash: hashIp(ip),
       status: "new",
     });
-    bookingId = saved.id;
+    bookingId = saved?.id;
   } catch (err) {
+    // Storage is optional — still try to email the office.
     console.error("[booking] supabase insert failed", err);
-    return NextResponse.json(
-      {
-        ok: false,
-        error:
-          "Sorry, we could not send your request just now. Please email info@friendlysupportlimited.co.uk or call 07384 440748.",
-      },
-      { status: 500 }
-    );
   }
 
   try {

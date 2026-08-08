@@ -1,16 +1,13 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import type { Booking, Enquiry } from "./validation";
 import { SUPPORT_TYPE_LABELS } from "./validation";
 
 /**
- * Email transport and templates.
+ * Email transport via Nodemailer (Gmail / Google Workspace SMTP).
  *
  * Two messages go out per submission:
- *   1. Office notification (Reply-To = enquirer)
- *   2. Acknowledgement to the enquirer (copy-deck wording + 999 line)
- *
- * No database — special-category health data in enquiries must not be stored
- * on the server by default. See docs/BACKEND.md.
+ *   1. Office notification to info@… (Reply-To = enquirer)
+ *   2. Acknowledgement to the enquirer
  */
 
 const OFFICE_EMAIL =
@@ -18,17 +15,43 @@ const OFFICE_EMAIL =
 
 const FROM_ADDRESS =
   process.env.MAIL_FROM ||
-  "Friendly Support Limited <no-reply@friendlysupportlimited.co.uk>";
+  `Friendly Support Limited <${OFFICE_EMAIL}>`;
 
 const PHONE = "07384 440748";
 const HOURS = "Monday to Sunday, 10am\u20139pm";
 
-function getResend() {
-  const key = process.env.RESEND_API_KEY;
-  if (!key) {
-    throw new Error("RESEND_API_KEY is not configured");
+function getTransporter() {
+  const user = process.env.SMTP_USER || OFFICE_EMAIL;
+  const pass = process.env.SMTP_PASS;
+
+  if (!pass) {
+    throw new Error("SMTP_PASS is not configured");
   }
-  return new Resend(key);
+
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    port: Number(process.env.SMTP_PORT || 587),
+    secure: process.env.SMTP_SECURE === "true", // true for 465
+    auth: { user, pass },
+  });
+}
+
+async function sendMail(options: {
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+  replyTo?: string;
+}) {
+  const transporter = getTransporter();
+  return transporter.sendMail({
+    from: FROM_ADDRESS,
+    to: options.to,
+    replyTo: options.replyTo,
+    subject: options.subject,
+    html: options.html,
+    text: options.text,
+  });
 }
 
 function esc(value: string): string {
@@ -66,7 +89,6 @@ function row(label: string, value: string): string {
 
 export async function sendEnquiryNotification(data: Enquiry) {
   const fullName = `${data.firstName} ${data.lastName}`;
-  const resend = getResend();
 
   const html = shell(
     "New enquiry from the website",
@@ -82,8 +104,7 @@ export async function sendEnquiryNotification(data: Enquiry) {
     ].join("")
   );
 
-  return resend.emails.send({
-    from: FROM_ADDRESS,
+  return sendMail({
     to: OFFICE_EMAIL,
     replyTo: data.email,
     subject: `Website enquiry \u2014 ${fullName}`,
@@ -103,7 +124,6 @@ export async function sendEnquiryNotification(data: Enquiry) {
 
 export async function sendBookingNotification(data: Booking) {
   const fullName = `${data.firstName} ${data.lastName}`;
-  const resend = getResend();
   const supportForLabel =
     data.supportFor === "Other" && data.supportForOther
       ? `Other — ${data.supportForOther}`
@@ -154,8 +174,7 @@ export async function sendBookingNotification(data: Booking) {
     ].join("")
   );
 
-  return resend.emails.send({
-    from: FROM_ADDRESS,
+  return sendMail({
     to: OFFICE_EMAIL,
     replyTo: data.email,
     subject: `Booking request \u2014 ${fullName}`,
@@ -186,7 +205,6 @@ export async function sendAcknowledgement(
   firstName: string,
   kind: "enquiry" | "booking"
 ) {
-  const resend = getResend();
   const opening =
     kind === "booking"
       ? "Thank you for your booking request. We have received it and will be in touch to confirm the details."
@@ -216,8 +234,7 @@ export async function sendAcknowledgement(
     `
   );
 
-  return resend.emails.send({
-    from: FROM_ADDRESS,
+  return sendMail({
     to,
     replyTo: OFFICE_EMAIL,
     subject: "Thank you \u2014 we have received your message",

@@ -1,14 +1,14 @@
 # Backend: Supabase + email
 
-Form submissions are stored in **Supabase** and emailed via **Resend**.
+Form submissions are stored in **Supabase** (optional) and emailed via **Nodemailer** (Gmail SMTP).
 
 ## Architecture
 
 ```
 Browser form → Next.js /api/enquiry or /api/booking
   → rate limit + Zod validation + spam checks
-  → insert into Supabase (enquiries / booking_requests)
-  → email office (Resend) + acknowledgement to enquirer
+  → insert into Supabase (enquiries / booking_requests) if configured
+  → email office (Nodemailer/Gmail) + acknowledgement to enquirer
 ```
 
 No public read access. Tables use RLS with **no anon policies**. The API uses the **service role** key on the server only.
@@ -30,11 +30,14 @@ Copy `.env.example` → `.env.local` and fill in:
 
 | Variable | Where to find it |
 |---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Project Settings → API → Project URL |
-| `SUPABASE_SERVICE_ROLE_KEY` | Project Settings → API → `service_role` (secret) |
-| `RESEND_API_KEY` | [resend.com](https://resend.com) |
-| `OFFICE_EMAIL` | Usually `info@friendlysupportlimited.co.uk` |
-| `MAIL_FROM` | Must use a domain verified in Resend |
+| `SMTP_HOST` | `smtp.gmail.com` |
+| `SMTP_PORT` | `587` |
+| `SMTP_USER` | `info@friendlysupportlimited.co.uk` |
+| `SMTP_PASS` | Google App Password (no spaces) |
+| `OFFICE_EMAIL` | `info@friendlysupportlimited.co.uk` |
+| `MAIL_FROM` | `Friendly Support Limited <info@friendlysupportlimited.co.uk>` |
+| `NEXT_PUBLIC_SUPABASE_URL` | Optional — Supabase Project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | Optional — Supabase service role |
 
 Also add these in **Vercel → Settings → Environment Variables**.
 
