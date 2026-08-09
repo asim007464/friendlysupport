@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookSidebar from "@/components/booking/BookSidebar";
@@ -128,13 +127,23 @@ function initialForm(): FormData {
 }
 
 export default function BookPage() {
-  const router = useRouter();
   const formTs = useRef(Date.now());
+  const formTopRef = useRef<HTMLDivElement>(null);
+  const skipScrollOnMount = useRef(true);
+  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [honeypot, setHoneypot] = useState("");
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormData>(initialForm);
+
+  useEffect(() => {
+    if (skipScrollOnMount.current) {
+      skipScrollOnMount.current = false;
+      return;
+    }
+    formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, [step, submitted]);
 
   const isHourly = form.supportType === "hourly";
   const isSelf = form.supportFor === "Myself";
@@ -239,7 +248,7 @@ export default function BookPage() {
       };
 
       if (data.ok) {
-        router.push("/");
+        setSubmitted(true);
         return;
       }
 
@@ -278,6 +287,23 @@ export default function BookPage() {
               </p>
             </div>
 
+            <div ref={formTopRef} className="scroll-mt-24">
+            {submitted ? (
+              <div className="max-w-2xl rounded-2xl border border-[#e8ecec] bg-white p-8 shadow-sm">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#7FBF7F]/20">
+                  <svg className="h-7 w-7 text-[#2d7a2d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h2 className="font-heading mb-3 text-2xl font-bold text-[#1a3d3d]">
+                  Your form has been submitted
+                </h2>
+                <p className="text-[16px] font-medium leading-relaxed text-[#1a3d3d]">
+                  Thank you. We have received your booking request and will get back to you
+                  within 48 hours.
+                </p>
+              </div>
+            ) : (
             <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
                 <div className="min-w-0 flex-1">
                   <div className="mb-5 flex items-center gap-3">
@@ -740,6 +766,8 @@ export default function BookPage() {
 
                 <BookSidebar />
               </div>
+            )}
+            </div>
           </div>
         </section>
       </main>

@@ -20,6 +20,14 @@ const FROM_ADDRESS =
 const PHONE = "07384 440748";
 const HOURS = "Monday to Sunday, 10am\u20139pm";
 
+/** Convert YYYY-MM-DD (storage) to DD/MM/YYYY (UK display). */
+function formatUkDate(isoDate: string): string {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(isoDate.trim());
+  if (!match) return isoDate;
+  const [, year, month, day] = match;
+  return `${day}/${month}/${year}`;
+}
+
 function getTransporter() {
   const user = process.env.SMTP_USER || OFFICE_EMAIL;
   const pass = process.env.SMTP_PASS;
@@ -150,7 +158,7 @@ export async function sendBookingNotification(data: Booking) {
       : SUPPORT_TYPE_LABELS[data.supportType];
   const dates =
     data.selectedDates.length > 0
-      ? data.selectedDates.join(", ")
+      ? data.selectedDates.map(formatUkDate).join(", ")
       : "Not specified";
 
   const html = shell(
