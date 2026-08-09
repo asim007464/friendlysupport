@@ -9,7 +9,6 @@ export default function Footer() {
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
-    { href: "/book", label: "Book Now" },
   ];
 
   return (
@@ -78,10 +77,6 @@ export default function Footer() {
               )}
               <p className="text-white/60">{SITE_HOURS}</p>
             </div>
-            <p className="mb-6 text-[15px] leading-relaxed text-white/70">
-              Ready to talk about support at home? We are here to help with a
-              friendly, no-pressure conversation.
-            </p>
             <Link
               href="/book"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-[15px] font-semibold text-[#1F7A7A] transition-all hover:bg-white/95 hover:shadow-lg"

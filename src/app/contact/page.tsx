@@ -370,25 +370,6 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section
-          className="border-y border-[#fde68a] bg-[#fffbeb] py-6"
-          aria-label="Important emergency notice"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="font-heading mb-2 text-base font-bold text-[#92400e]">
-              Important Emergency Notice
-            </h2>
-            <p className="text-[14px] leading-relaxed text-[#92400e]">
-              Please note: Friendly Support Limited is not an emergency service.
-              If there is a medical emergency, or if someone is in immediate
-              danger, please call 999 straight away.
-            </p>
-            <p className="mt-2 text-[14px] leading-relaxed text-[#92400e]">
-              For urgent safeguarding concerns during our office hours, please
-              contact us as soon as possible.
-            </p>
-          </div>
-        </section>
       </main>
 
       <Footer />

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_EMAIL, SITE_EMERGENCY, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export const metadata: Metadata = {
   title: "Safeguarding | Friendly Support Limited",
@@ -22,8 +22,19 @@ export default function SafeguardingPage() {
                 Everyone has the right to feel safe at home. Our support workers are trained to treat
                 people with dignity and to raise concerns if they see something that worries them.
               </p>
-              <div className="rounded-xl border border-[#fde68a] bg-[#fffbeb] p-5">
-                <p className="font-semibold text-[#92400e]">{SITE_EMERGENCY}</p>
+              <div className="rounded-xl border border-[#e8ecec] bg-white p-5">
+                <p className="text-[15px] leading-relaxed text-[#4a5568]">
+                  If you are worried about someone’s safety, contact us during office hours (
+                  {SITE_HOURS}) on{" "}
+                  <a href={`tel:${SITE_PHONE_TEL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                    {SITE_PHONE_DISPLAY}
+                  </a>{" "}
+                  or email{" "}
+                  <a href={`mailto:${SITE_EMAIL}`} className="font-semibold text-[#1F7A7A] hover:underline">
+                    {SITE_EMAIL}
+                  </a>
+                  .
+                </p>
               </div>
               <h2 className="font-heading pt-4 text-xl font-bold text-[#1a3d3d]">Report a concern to us</h2>
               <p>

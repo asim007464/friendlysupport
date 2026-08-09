@@ -2,13 +2,14 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookSidebar from "@/components/booking/BookSidebar";
 import TwoMonthCalendar from "@/components/booking/TwoMonthCalendar";
 import { HOURLY_MINIMUM_HOURS } from "@/data/pricingCopy";
 
-const TOTAL_STEPS = 6;
+const TOTAL_STEPS = 5;
 
 const STAGES = [
   { num: 1, title: "About you" },
@@ -16,7 +17,6 @@ const STAGES = [
   { num: 3, title: "Visit address" },
   { num: 4, title: "Kind of help" },
   { num: 5, title: "When" },
-  { num: 6, title: "Consent" },
 ];
 
 const supportForOptions = [
@@ -100,7 +100,6 @@ type FormData = {
   timeFrom: string;
   timeTo: string;
   timingNotes: string;
-  consent: boolean;
 };
 
 function initialForm(): FormData {
@@ -125,13 +124,12 @@ function initialForm(): FormData {
     timeFrom: "",
     timeTo: "",
     timingNotes: "",
-    consent: false,
   };
 }
 
 export default function BookPage() {
+  const router = useRouter();
   const formTs = useRef(Date.now());
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -176,14 +174,12 @@ export default function BookPage() {
           form.helpTypes.length > 0 &&
           (!form.helpTypes.includes("Other") || form.helpTypesOther.trim()) &&
           form.frequency &&
-          (form.frequency !== "Other" || form.frequencyOther.trim())
+          (form.frequency !== "Other" || form.frequencyOther.trim()) &&
+          form.supportType
         );
       case 5:
-        if (!form.supportType) return false;
         if (!isHourly) return true;
         return !!(form.timeFrom && form.timeTo);
-      case 6:
-        return form.consent;
       default:
         return false;
     }
@@ -231,6 +227,7 @@ export default function BookPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
+          consent: true,
           website: honeypot,
           formTs: formTs.current,
         }),
@@ -242,7 +239,7 @@ export default function BookPage() {
       };
 
       if (data.ok) {
-        setSubmitted(true);
+        router.push("/");
         return;
       }
 
@@ -273,7 +270,7 @@ export default function BookPage() {
             <div className="mb-8">
               <h1 className="font-heading text-3xl font-bold text-[#1a3d3d] sm:text-4xl">Book now</h1>
               <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-[#4a5568]">
-                Full booking form for visits, address, timing and consent. Only have a quick question?{" "}
+                Full booking form for visits, address and timing. Only have a quick question?{" "}
                 <Link href="/contact" className="font-semibold text-[#1F7A7A] hover:underline">
                   Contact us
                 </Link>{" "}
@@ -281,22 +278,7 @@ export default function BookPage() {
               </p>
             </div>
 
-            {submitted ? (
-              <div className="max-w-2xl rounded-2xl border border-[#e8ecec] bg-white p-8 shadow-sm">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#7FBF7F]/20">
-                  <svg className="h-7 w-7 text-[#2d7a2d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <h2 className="font-heading mb-3 text-2xl font-bold text-[#1a3d3d]">
-                  Booking request received
-                </h2>
-                <p className="text-[16px] font-medium leading-relaxed text-[#1a3d3d]">
-                  A member of our team will get back to you within 48 hours.
-                </p>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
                 <div className="min-w-0 flex-1">
                   <div className="mb-5 flex items-center gap-3">
                     <span className="rounded-md bg-[#1a3d3d] px-3 py-1.5 text-sm font-bold text-white">
@@ -567,28 +549,9 @@ export default function BookPage() {
                                 />
                               </div>
                             )}
-                            <p className="text-[14px] text-[#64748b]">
-                              You will choose visit times in the next step.
-                            </p>
-                          </div>
-                        </>
-                      )}
-
-                      {step === 5 && (
-                        <>
-                          <StepHeader
-                            n={5}
-                            title="When & visit times"
-                            sub={
-                              isHourly
-                                ? `Hourly visits are ${HOURLY_MINIMUM_HOURS} hours minimum, between 8am and 8pm. Live-in is priced separately and confirmed in writing.`
-                                : "Live-in support is quoted weekly. We confirm everything in writing before you agree."
-                            }
-                          />
-                          <div className="space-y-6">
                             <div>
                               <p className={labelClass}>Type of support *</p>
-                              <div className="mt-3 space-y-2.5">
+                              <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
                                 {supportTypeOptions.map((opt) => (
                                   <label
                                     key={opt.value}
@@ -602,7 +565,15 @@ export default function BookPage() {
                                       type="radio"
                                       name="supportType"
                                       checked={form.supportType === opt.value}
-                                      onChange={() => update("supportType", opt.value)}
+                                      onChange={() => {
+                                        setForm((prev) => ({
+                                          ...prev,
+                                          supportType: opt.value,
+                                          ...(opt.value !== "hourly"
+                                            ? { timeFrom: "", timeTo: "", selectedDates: [] }
+                                            : {}),
+                                        }));
+                                      }}
                                       className="h-[18px] w-[18px] text-[#1F7A7A]"
                                     />
                                     <span className="text-[15px] text-[#374151]">{opt.label}</span>
@@ -610,13 +581,78 @@ export default function BookPage() {
                                 ))}
                               </div>
                             </div>
+                            <p className="text-[14px] text-[#64748b]">
+                              Next, you can share preferred times
+                              {form.supportType === "hourly" ? " and dates" : ""}.
+                            </p>
+                          </div>
+                        </>
+                      )}
 
-                            {isHourly && (
+                      {step === 5 && (
+                        <>
+                          <StepHeader
+                            n={5}
+                            title={isHourly ? "Preferred visit times" : "Anything else to add?"}
+                            sub={
+                              isHourly
+                                ? `Choose a usual time window (${HOURLY_MINIMUM_HOURS} hours minimum, 8am–8pm). Dates are optional.`
+                                : "Live-in support is arranged and confirmed in writing. Add any notes if helpful, then confirm."
+                            }
+                          />
+                          <div className="space-y-6">
+                            {isHourly ? (
                               <>
+                                <div className="grid gap-5 sm:grid-cols-2">
+                                  <div>
+                                    <label className={labelClass}>From *</label>
+                                    <select
+                                      value={form.timeFrom}
+                                      onChange={(e) => update("timeFrom", e.target.value)}
+                                      className={selectClass}
+                                    >
+                                      <option value="">Select…</option>
+                                      {TIME_OPTIONS.map((t) => (
+                                        <option key={`from-${t}`} value={t}>
+                                          {t}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                  <div>
+                                    <label className={labelClass}>To *</label>
+                                    <select
+                                      value={form.timeTo}
+                                      onChange={(e) => update("timeTo", e.target.value)}
+                                      className={selectClass}
+                                    >
+                                      <option value="">Select…</option>
+                                      {TIME_OPTIONS.map((t) => (
+                                        <option key={`to-${t}`} value={t}>
+                                          {t}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                </div>
+
                                 <div>
-                                  <p className={labelClass}>Dates (optional)</p>
+                                  <label className={labelClass}>
+                                    Anything else we should know? (optional)
+                                  </label>
+                                  <textarea
+                                    value={form.timingNotes}
+                                    onChange={(e) => update("timingNotes", e.target.value)}
+                                    rows={3}
+                                    className={inputClass}
+                                    placeholder="e.g. key safe code, drop shopping if I am out…"
+                                  />
+                                </div>
+
+                                <div>
+                                  <p className={labelClass}>Preferred dates (optional)</p>
                                   <p className="mb-3 text-[14px] text-[#64748b]">
-                                    Tap days on the calendar, or use the shortcuts below.
+                                    Tap days if you already have dates in mind, or skip this.
                                   </p>
                                   <div className="mb-3 flex flex-wrap gap-2">
                                     <button
@@ -639,86 +675,21 @@ export default function BookPage() {
                                     onChange={(dates) => update("selectedDates", dates)}
                                   />
                                 </div>
-
-                                <div className="grid gap-5 sm:grid-cols-2">
-                                  <div>
-                                    <label className={labelClass}>From (8am–8pm) *</label>
-                                    <select
-                                      value={form.timeFrom}
-                                      onChange={(e) => update("timeFrom", e.target.value)}
-                                      className={selectClass}
-                                    >
-                                      <option value="">Select…</option>
-                                      {TIME_OPTIONS.map((t) => (
-                                        <option key={`from-${t}`} value={t}>
-                                          {t}
-                                        </option>
-                                      ))}
-                                    </select>
-                                  </div>
-                                  <div>
-                                    <label className={labelClass}>To (8am–8pm) *</label>
-                                    <select
-                                      value={form.timeTo}
-                                      onChange={(e) => update("timeTo", e.target.value)}
-                                      className={selectClass}
-                                    >
-                                      <option value="">Select…</option>
-                                      {TIME_OPTIONS.map((t) => (
-                                        <option key={`to-${t}`} value={t}>
-                                          {t}
-                                        </option>
-                                      ))}
-                                    </select>
-                                  </div>
-                                </div>
-
-                                <div>
-                                  <label className={labelClass}>
-                                    Anything else we should know? (optional)
-                                  </label>
-                                  <p className="mb-2 text-[14px] text-[#64748b]">
-                                    Key safe code, how to get in if you are out, drop shopping at the
-                                    door, or anything else about the visit.
-                                  </p>
-                                  <textarea
-                                    value={form.timingNotes}
-                                    onChange={(e) => update("timingNotes", e.target.value)}
-                                    rows={3}
-                                    className={inputClass}
-                                    placeholder="e.g. key safe code, drop shopping if I am out…"
-                                  />
-                                </div>
                               </>
+                            ) : (
+                              <div>
+                                <label className={labelClass}>
+                                  Anything else we should know? (optional)
+                                </label>
+                                <textarea
+                                  value={form.timingNotes}
+                                  onChange={(e) => update("timingNotes", e.target.value)}
+                                  rows={4}
+                                  className={inputClass}
+                                  placeholder="Preferred start date, nights needed, or other notes…"
+                                />
+                              </div>
                             )}
-                          </div>
-                        </>
-                      )}
-
-                      {step === 6 && (
-                        <>
-                          <StepHeader
-                            n={6}
-                            title="Consent"
-                            sub="Please confirm you are happy for us to use your details to reply."
-                          />
-                          <div className="rounded-xl border-2 border-[#e5e7eb] bg-[#F8FAFA] p-5">
-                            <label className="flex cursor-pointer items-start gap-3">
-                              <input
-                                type="checkbox"
-                                checked={form.consent}
-                                onChange={(e) => update("consent", e.target.checked)}
-                                className="mt-1 h-[18px] w-[18px] rounded border-[#d1d5db] text-[#1F7A7A]"
-                              />
-                              <span className="text-[15px] leading-relaxed text-[#374151]">
-                                I am happy for Friendly Support Limited to use my details to
-                                respond, in line with your{" "}
-                                <Link href="/privacy" className="font-semibold text-[#1F7A7A] hover:underline">
-                                  privacy policy
-                                </Link>
-                                . *
-                              </span>
-                            </label>
                           </div>
                         </>
                       )}
@@ -759,7 +730,7 @@ export default function BookPage() {
                                 : "cursor-not-allowed bg-[#e5e7eb] text-[#94a3b8]"
                             }`}
                           >
-                            {submitting ? "Sending…" : "Send this to Friendly Support"}
+                            {submitting ? "Sending…" : "Confirm & send"}
                           </button>
                         )}
                       </div>
@@ -769,7 +740,6 @@ export default function BookPage() {
 
                 <BookSidebar />
               </div>
-            )}
           </div>
         </section>
       </main>

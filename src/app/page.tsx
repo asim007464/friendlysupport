@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import TrustStrip from "@/components/TrustStrip";
 import HowItWorks from "@/components/HowItWorks";
 import FaqAccordion from "@/components/FaqAccordion";
-import EmergencyNote from "@/components/EmergencyNote";
 import ServiceCards from "@/components/services/ServiceCards";
 import { SERVICE_AREA_HERO } from "@/data/areasCopy";
 import { SITE_EMAIL, SITE_PHONE_TEL } from "@/data/siteContact";
@@ -146,8 +145,6 @@ export default function Home() {
             </p>
           </div>
         </section>
-
-        <EmergencyNote />
 
         {/* Call to Action Section */}
         <section className="relative overflow-hidden py-24 sm:py-32">

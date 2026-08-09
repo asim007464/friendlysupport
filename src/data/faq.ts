@@ -55,7 +55,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "What happens after I submit the form?",
     answer:
-      "Every enquiry is reviewed personally.\n\nA member of our team will contact you within 24 to 48 hours, and often sooner, to understand your needs, answer your questions and explain the next steps.\n\nThere is no pressure to proceed. The first conversation is simply an opportunity to understand what kind of support may be helpful.",
+      "Every enquiry is reviewed personally.\n\nA member of our team will contact you within 24 to 48 hours to understand your needs, answer your questions and explain the next steps.\n\nThere is no pressure to proceed. The first conversation is simply an opportunity to understand what kind of support may be helpful.",
   },
   {
     question: "Can I change or cancel a visit?",
@@ -81,11 +81,6 @@ export const FAQ_ITEMS: FaqItem[] = [
     question: "Do you provide live-in support?",
     answer:
       "Yes, live-in support may be available by arrangement.\n\nOur live-in support is non-regulated and does not include personal care, medication administration, nursing or medical procedures. It is intended for companionship, reassurance and practical everyday support at home.\n\nThe exact arrangement and cost will be discussed and confirmed clearly in writing.",
-  },
-  {
-    question: "What should I do in an emergency?",
-    answer:
-      "Friendly Support Limited is not an emergency service.\n\nFor a medical emergency, or if someone is in immediate danger, please call 999 straight away.\n\nFor urgent safeguarding concerns during our office hours, Monday to Sunday, 10am to 9pm, please contact us as soon as possible.",
   },
   {
     question: "What if I am not sure whether your service is right for me?",

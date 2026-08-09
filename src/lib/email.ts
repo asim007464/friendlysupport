@@ -222,10 +222,6 @@ export async function sendAcknowledgement(
       Nothing is agreed at this stage. We will talk things through with you first, and confirm
       any support and costs clearly in writing before you decide to proceed.
     </p>
-    <p style="margin:0 0 20px;padding:14px 16px;background:#fff5f5;border-left:3px solid #c0392b;font-size:13px;line-height:1.6;">
-      <strong>Please note:</strong> Friendly Support Limited is not an emergency service.
-      If there is a medical emergency, or if someone is in immediate danger, please call 999 straight away.
-    </p>
     <p style="margin:0;font-size:15px;line-height:1.6;">
       With kind regards,<br>
       <strong>Friendly Support Limited</strong><br>
@@ -247,8 +243,6 @@ export async function sendAcknowledgement(
       `If your enquiry is urgent, please call ${PHONE} during our office hours, ${HOURS}.`,
       "",
       "Nothing is agreed at this stage. We will talk things through with you first, and confirm any support and costs clearly in writing before you decide to proceed.",
-      "",
-      "Please note: Friendly Support Limited is not an emergency service. If there is a medical emergency, or if someone is in immediate danger, please call 999 straight away.",
       "",
       "With kind regards,",
       "Friendly Support Limited",
