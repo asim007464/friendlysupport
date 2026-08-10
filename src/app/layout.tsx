@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Open_Sans } from "next/font/google";
-import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const libreBaskerville = Libre_Baskerville({
@@ -67,7 +66,6 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
-        <CookieBanner />
       </body>
     </html>
   );

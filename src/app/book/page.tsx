@@ -128,7 +128,6 @@ function initialForm(): FormData {
 
 export default function BookPage() {
   const formTs = useRef(Date.now());
-  const formTopRef = useRef<HTMLDivElement>(null);
   const skipScrollOnMount = useRef(true);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -137,13 +136,29 @@ export default function BookPage() {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormData>(initialForm);
 
+  const scrollPageToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   useEffect(() => {
     if (skipScrollOnMount.current) {
       skipScrollOnMount.current = false;
       return;
     }
-    formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Wait for the new step to render, then jump to the top of the page.
+    const id = window.requestAnimationFrame(() => {
+      scrollPageToTop();
+      window.setTimeout(scrollPageToTop, 50);
+    });
+    return () => window.cancelAnimationFrame(id);
   }, [step, submitted]);
+
+  const goToStep = (nextStep: number) => {
+    setStep(nextStep);
+    scrollPageToTop();
+  };
 
   const isHourly = form.supportType === "hourly";
   const isSelf = form.supportFor === "Myself";
@@ -287,7 +302,7 @@ export default function BookPage() {
               </p>
             </div>
 
-            <div ref={formTopRef} className="scroll-mt-24">
+            <div>
             {submitted ? (
               <div className="max-w-2xl rounded-2xl border border-[#e8ecec] bg-white p-8 shadow-sm">
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#7FBF7F]/20">
@@ -723,7 +738,7 @@ export default function BookPage() {
                       <div className="mt-10 flex items-center justify-between gap-4 border-t border-[#f0f0f0] pt-8">
                         <button
                           type="button"
-                          onClick={() => setStep((s) => s - 1)}
+                          onClick={() => goToStep(step - 1)}
                           disabled={step === 1}
                           className={`rounded-xl px-7 py-3 text-[15px] font-semibold transition-all ${
                             step === 1
@@ -736,7 +751,7 @@ export default function BookPage() {
                         {step < TOTAL_STEPS ? (
                           <button
                             type="button"
-                            onClick={() => setStep((s) => s + 1)}
+                            onClick={() => goToStep(step + 1)}
                             disabled={!canProceed()}
                             className={`rounded-xl px-10 py-3 text-[15px] font-semibold transition-all ${
                               canProceed()
