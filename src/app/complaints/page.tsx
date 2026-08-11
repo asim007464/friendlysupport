@@ -49,8 +49,8 @@ export default function ComplaintsPage() {
               <p>
                 If you remain unhappy after our response, we will explain any further options available
                 to you. For safeguarding concerns, see our{" "}
-                <Link href="/safeguarding" className="font-semibold text-[#1F7A7A] hover:underline">
-                  safeguarding page
+                <Link href="/privacy" className="font-semibold text-[#1F7A7A] hover:underline">
+                  company policy
                 </Link>
                 .
               </p>

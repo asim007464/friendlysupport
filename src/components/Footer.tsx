@@ -112,9 +112,6 @@ export default function Footer() {
             <Link href="/complaints" className="text-white/50 transition-colors hover:text-white/80">
               Complaints
             </Link>
-            <Link href="/safeguarding" className="text-white/50 transition-colors hover:text-white/80">
-              Company Policy
-            </Link>
             <Link href="/accessibility" className="text-white/50 transition-colors hover:text-white/80">
               Accessibility
             </Link>

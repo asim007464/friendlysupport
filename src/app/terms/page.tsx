@@ -646,7 +646,7 @@ export default function TermsPage() {
                   Friendly Support Limited processes personal information in accordance with
                   applicable UK data-protection law. A separate{" "}
                   <Link href="/privacy" className="font-semibold text-[#1F7A7A] hover:underline">
-                    Privacy Notice
+                    Company Policy
                   </Link>{" "}
                   will explain matters including:
                 </p>
