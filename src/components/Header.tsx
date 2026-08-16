@@ -41,8 +41,14 @@ export default function Header() {
             {SITE_PHONE_DISPLAY}
           </a>
           <Link
+            href="/apply"
+            className="ml-1 rounded-lg border-2 border-[#1F7A7A] px-5 py-2.5 text-[15px] font-semibold text-[#1F7A7A] transition-colors hover:bg-[#1F7A7A]/5"
+          >
+            Apply Now
+          </Link>
+          <Link
             href="/book"
-            className="ml-1 rounded-lg bg-[#1F7A7A] px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
+            className="rounded-lg bg-[#1F7A7A] px-5 py-2.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#1a6565]"
           >
             Book Now
           </Link>
@@ -109,6 +115,13 @@ export default function Header() {
               >
                 {SITE_PHONE_DISPLAY}
               </a>
+              <Link
+                href="/apply"
+                onClick={() => setMobileMenuOpen(false)}
+                className="mt-2 rounded-lg border-2 border-[#1F7A7A] px-4 py-3 text-center text-[15px] font-semibold text-[#1F7A7A] transition-colors hover:bg-white"
+              >
+                Apply Now
+              </Link>
               <Link
                 href="/book"
                 onClick={() => setMobileMenuOpen(false)}

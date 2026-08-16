@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import type { Booking, Enquiry } from "./validation";
+import type { Application, Booking, Enquiry } from "./validation";
 import { SUPPORT_TYPE_LABELS } from "./validation";
 
 /**
@@ -204,6 +204,107 @@ export async function sendBookingNotification(data: Booking) {
       "",
       "Notes:",
       data.timingNotes || "—",
+    ].join("\n"),
+  });
+}
+
+export async function sendApplicationNotification(data: Application) {
+  const join = (items: string[]) => (items.length ? items.join("; ") : "—");
+
+  const html = shell(
+    "New companion application",
+    [
+      row("Name", data.name),
+      row("Email", data.email),
+      row("Phone", data.phone),
+      row("Postcode", data.postcode.toUpperCase()),
+      row("Right to work in UK", join(data.rightToWork)),
+      row("Availability", join(data.availability)),
+      row("Hours wanted", join(data.hoursWanted)),
+      row("Willing to travel", join(data.travel)),
+      row("Experience", join(data.experience)),
+      row("About", data.about),
+      row("DBS on Update Service", join(data.dbs)),
+      row("Drives, with a car", join(data.drive)),
+      row("Can provide two references", join(data.references)),
+      row("Heard about you via", join(data.heardAbout)),
+      data.adjustments ? row("Adjustments / notes", data.adjustments) : "",
+      `<p style="margin:22px 0 0;padding-top:16px;border-top:1px solid #e3e6ea;font-size:12px;color:#6B7280;">
+        Reply directly to this email to respond to ${esc(data.name)}.
+        Target response time is within three working days.
+      </p>`,
+    ].join("")
+  );
+
+  return sendMail({
+    to: OFFICE_EMAIL,
+    replyTo: data.email,
+    subject: `Application \u2014 ${data.name}${data.postcode ? ` (${data.postcode.toUpperCase()})` : ""}`,
+    html,
+    text: [
+      "Companion & Home Support Worker application",
+      "",
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Phone: ${data.phone}`,
+      `Postcode: ${data.postcode.toUpperCase()}`,
+      `Right to work in UK: ${join(data.rightToWork)}`,
+      `Availability: ${join(data.availability)}`,
+      `Hours wanted: ${join(data.hoursWanted)}`,
+      `Willing to travel: ${join(data.travel)}`,
+      `Experience: ${join(data.experience)}`,
+      "",
+      "About me:",
+      data.about,
+      "",
+      `DBS on Update Service: ${join(data.dbs)}`,
+      `Drives, with a car: ${join(data.drive)}`,
+      `Can provide two references: ${join(data.references)}`,
+      `Heard about you via: ${join(data.heardAbout)}`,
+      "",
+      "Anything that would make applying easier:",
+      data.adjustments || "—",
+    ].join("\n"),
+  });
+}
+
+export async function sendApplicationAcknowledgement(to: string, name: string) {
+  const firstName = name.trim().split(/\s+/)[0] || name;
+
+  const html = shell(
+    "Thank you \u2014 we have received your application",
+    `
+    <p style="margin:0 0 14px;font-size:15px;line-height:1.6;">Dear ${esc(firstName)},</p>
+    <p style="margin:0 0 14px;font-size:15px;line-height:1.6;">
+      Thank you for applying to join Friendly Support Limited as a Companion &amp; Home Support Worker.
+      Someone from our team will read your application properly and get back to you within three working days.
+    </p>
+    <p style="margin:0 0 20px;font-size:15px;line-height:1.6;">
+      If you would rather talk, please call ${PHONE} during our office hours, ${HOURS}.
+    </p>
+    <p style="margin:0;font-size:15px;line-height:1.6;">
+      With kind regards,<br>
+      <strong>Friendly Support Limited</strong><br>
+      <span style="color:#6B7280;font-size:13px;">Compassionate Support at Home &middot; Supporting clients across London</span>
+    </p>
+    `
+  );
+
+  return sendMail({
+    to,
+    replyTo: OFFICE_EMAIL,
+    subject: "Thank you \u2014 we have received your application",
+    html,
+    text: [
+      `Dear ${firstName},`,
+      "",
+      "Thank you for applying to join Friendly Support Limited as a Companion & Home Support Worker. Someone from our team will read your application properly and get back to you within three working days.",
+      "",
+      `If you would rather talk, please call ${PHONE} during our office hours, ${HOURS}.`,
+      "",
+      "With kind regards,",
+      "Friendly Support Limited",
+      "Compassionate Support at Home - Supporting clients across London",
     ].join("\n"),
   });
 }

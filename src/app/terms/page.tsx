@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SITE_EMAIL, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
+import { SITE_COMPANY_NUMBER, SITE_EMAIL, SITE_ICO_NUMBER, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export const metadata: Metadata = {
   title: "Client Terms and Conditions | Friendly Support Limited",
@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 const companyFacts = [
   { label: "Company Name", value: "Friendly Support Limited" },
-  { label: "Company Number", value: "16588810" },
-  { label: "ICO Registration Number", value: "C1900441" },
+  { label: "Company Number", value: SITE_COMPANY_NUMBER },
+  { label: "ICO Registration Number", value: SITE_ICO_NUMBER },
   {
     label: "Registered Office",
     value:
@@ -664,7 +664,7 @@ export default function TermsPage() {
                   Relevant health-related information will only be collected where there is an
                   appropriate reason for doing so.
                 </p>
-                <p>ICO Registration Number: C1900441</p>
+                <p>ICO Registration Number: {SITE_ICO_NUMBER}</p>
               </Section>
 
               <Section n={31} title="Photographs, recordings and marketing">

@@ -181,6 +181,71 @@ export const bookingSchema = z
 
 export type Booking = z.infer<typeof bookingSchema>;
 
+/** Job application — Companion & Home Support Worker. */
+export const applicationSchema = z.object({
+  name: shortText("Your name", 120),
+  email,
+  phone: ukPhone,
+  postcode: shortText("Postcode", 20),
+  rightToWork: z
+    .array(z.string().trim().min(1).max(40))
+    .max(2)
+    .optional()
+    .default([]),
+  availability: z
+    .array(z.string().trim().min(1).max(40))
+    .max(30)
+    .optional()
+    .default([]),
+  hoursWanted: z
+    .array(z.string().trim().min(1).max(80))
+    .max(5)
+    .optional()
+    .default([]),
+  travel: z
+    .array(z.string().trim().min(1).max(80))
+    .max(5)
+    .optional()
+    .default([]),
+  experience: z
+    .array(z.string().trim().min(1).max(120))
+    .max(10)
+    .optional()
+    .default([]),
+  about: z
+    .string({ error: "Please tell us a little about yourself" })
+    .trim()
+    .min(10, "Please tell us a little more about yourself")
+    .max(4000, "Please keep this under 4000 characters"),
+  dbs: z
+    .array(z.string().trim().min(1).max(40))
+    .max(3)
+    .optional()
+    .default([]),
+  drive: z
+    .array(z.string().trim().min(1).max(40))
+    .max(2)
+    .optional()
+    .default([]),
+  references: z
+    .array(z.string().trim().min(1).max(80))
+    .max(2)
+    .optional()
+    .default([]),
+  heardAbout: z
+    .array(z.string().trim().min(1).max(80))
+    .max(5)
+    .optional()
+    .default([]),
+  adjustments: z.string().trim().max(2000).optional().default(""),
+  consent: z.literal(true, {
+    error: "Please confirm you are happy for us to hold your details",
+  }),
+  ...antiSpam,
+});
+
+export type Application = z.infer<typeof applicationSchema>;
+
 /** Flattens a ZodError into { fieldName: "message" } for the frontend. */
 export function fieldErrors(error: z.ZodError): Record<string, string> {
   const out: Record<string, string> = {};

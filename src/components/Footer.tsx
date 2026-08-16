@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { SITE_EMAIL, SITE_HOURS, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
+import { SITE_EMAIL, SITE_HOURS, SITE_ICO_NUMBER, SITE_PHONE_DISPLAY, SITE_PHONE_TEL } from "@/data/siteContact";
 
 export default function Footer() {
   const quickLinks = [
@@ -101,11 +101,17 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-sm text-white/50">
-            © {new Date().getFullYear()} Friendly Support Limited. All rights
-            reserved.
-          </p>
+          <div className="text-center text-sm text-white/50 sm:text-left">
+            <p>
+              © {new Date().getFullYear()} Friendly Support Limited. All rights
+              reserved.
+            </p>
+            <p className="mt-1">ICO Registration Number: {SITE_ICO_NUMBER}</p>
+          </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <Link href="/apply" className="text-white/50 transition-colors hover:text-white/80">
+              Apply Now
+            </Link>
             <Link href="/faq" className="text-white/50 transition-colors hover:text-white/80">
               FAQ
             </Link>
