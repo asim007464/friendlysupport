@@ -380,7 +380,8 @@ export default function ContactPage() {
                 <p className="mt-2 text-[15px] leading-relaxed text-[#4a5568]">
                   We are always pleased to hear from kind, reliable people who
                   would like to join our team of companions and carers across
-                  London. No CV is needed to apply.
+                  London. We will request further details after initial
+                  screening.
                 </p>
               </div>
               <Link
