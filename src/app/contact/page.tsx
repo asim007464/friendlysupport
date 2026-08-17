@@ -370,6 +370,41 @@ export default function ContactPage() {
           </div>
         </section>
 
+        <section className="border-t border-[#e8ecec] bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-2xl">
+                <h2 className="font-heading text-xl font-bold text-[#1a3d3d] sm:text-2xl">
+                  Looking for work as a carer?
+                </h2>
+                <p className="mt-2 text-[15px] leading-relaxed text-[#4a5568]">
+                  We are always pleased to hear from kind, reliable people who
+                  would like to join our team of companions and carers across
+                  London. No CV is needed to apply.
+                </p>
+              </div>
+              <Link
+                href="/apply"
+                className="inline-flex shrink-0 items-center gap-2 rounded-xl border-2 border-[#1F7A7A] px-6 py-3.5 text-[15px] font-semibold text-[#1F7A7A] transition-colors hover:bg-[#1F7A7A]/5"
+              >
+                Carer Application
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

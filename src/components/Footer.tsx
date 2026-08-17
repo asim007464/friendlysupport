@@ -109,9 +109,6 @@ export default function Footer() {
             <p className="mt-1">ICO Registration Number: {SITE_ICO_NUMBER}</p>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <Link href="/apply" className="text-white/50 transition-colors hover:text-white/80">
-              Apply Now
-            </Link>
             <Link href="/faq" className="text-white/50 transition-colors hover:text-white/80">
               FAQ
             </Link>
